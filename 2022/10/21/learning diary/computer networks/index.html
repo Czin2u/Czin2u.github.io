@@ -28,8 +28,11 @@
 <meta property="og:image" content="https://img-blog.csdnimg.cn/092031eea6f9466c951667cdeb61bf3b.png">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/7a78f7db673e45a784c665f4f00ffc03.png">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/c36681f4d0eb415e876717514cc38af2.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/336847053d1348498e5a2e559b4b5e02.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/485129836f434fbba0cb0251b44e893c.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/b4571661681440ba81cbb0c5b5f74971.png">
 <meta property="article:published_time" content="2022-10-20T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-10-21T11:52:22.698Z">
+<meta property="article:modified_time" content="2022-10-21T13:41:13.159Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://img-blog.csdnimg.cn/5bf484941f0e4c249e197ace92781c64.png">
@@ -251,7 +254,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2k words
+          3.8k words
         
       </span>
     
@@ -262,7 +265,7 @@
         
         
         
-          17 mins
+          32 mins
         
       </span>
     
@@ -375,6 +378,65 @@
 </ol>
 <p><img src="https://img-blog.csdnimg.cn/7a78f7db673e45a784c665f4f00ffc03.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p><img src="https://img-blog.csdnimg.cn/c36681f4d0eb415e876717514cc38af2.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h5 id="UDP协议详解"><a href="#UDP协议详解" class="headerlink" title="UDP协议详解"></a>UDP协议详解</h5><p>UDP(User Datagram Protocol: 用户数据报协议)，是一个非常简单的协议，</p>
+<p><img src="https://img-blog.csdnimg.cn/336847053d1348498e5a2e559b4b5e02.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>UDP协议的特点：</p>
+<ul>
+<li>UDP是无连接协议；</li>
+<li>UDP不能保证可靠的交付数据；</li>
+<li>UDP是面向报文传输的；</li>
+<li>UDP没有拥塞控制；</li>
+<li>UDP首部开销很小。</li>
+</ul>
+<h5 id="TCP协议详解"><a href="#TCP协议详解" class="headerlink" title="TCP协议详解"></a>TCP协议详解</h5><p>TCP(Transmission Control Protocol: 传输控制协议)，是计算机网络中非常复杂的一个协议。<br><img src="https://img-blog.csdnimg.cn/485129836f434fbba0cb0251b44e893c.png" srcset="/img/loading.gif" lazyload alt=" "></p>
+<h5 id="TCP协议的功能："><a href="#TCP协议的功能：" class="headerlink" title="TCP协议的功能："></a>TCP协议的功能：</h5><ol>
+<li>对应用层报文进行分段和重组；</li>
+<li>面向应用层实现复用与分解；</li>
+<li>实现端到端的流量控制；</li>
+<li>拥塞控制；</li>
+<li>传输层寻址；</li>
+<li>对收到的报文进行差错检测（首部和数据部分都检错）；</li>
+<li>实现进程间的端到端可靠数据传输控制。</li>
+</ol>
+<h5 id="TCP协议的特点："><a href="#TCP协议的特点：" class="headerlink" title="TCP协议的特点："></a>TCP协议的特点：</h5><ul>
+<li>TCP是面向连接的协议；</li>
+<li>TCP是面向字节流的协议；</li>
+<li>TCP的一个连接有两端，即点对点通信；</li>
+<li>TCP提供可靠的传输服务；</li>
+<li>TCP协议提供全双工通信（每条TCP连接只能一对一）；</li>
+</ul>
+<h5 id="TCP连接的三次握手（重要）"><a href="#TCP连接的三次握手（重要）" class="headerlink" title="TCP连接的三次握手（重要）"></a>TCP连接的三次握手（重要）</h5><p>TCP三次握手使用指令：</p>
+<p><img src="https://img-blog.csdnimg.cn/b4571661681440ba81cbb0c5b5f74971.png" srcset="/img/loading.gif" lazyload alt=" "></p>
+<p>面试常客：为什么需要三次握手？</p>
+<ol>
+<li>第一次握手：客户发送请求，此时服务器知道客户能发；</li>
+<li>第二次握手：服务器发送确认，此时客户知道服务器能发能收；</li>
+<li>第三次握手：客户发送确认，此时服务器知道客户能收。</li>
+</ol>
+<p>建立连接（三次握手）：</p>
+<p><code>第一次</code>：客户向服务器发送连接请求段，建立连接请求控制段（SYN&#x3D;1），表示传输的报文段的第一个数据字节的序列号是x，此序列号代表整个报文段的序号（seq&#x3D;x）；客户端进入 SYN_SEND （同步发送状态）；</p>
+<p><code>第二次</code>：服务器发回确认报文段，同意建立新连接的确认段（SYN&#x3D;1），确认序号字段有效（ACK&#x3D;1），服务器告诉客户端报文段序号是y（seq&#x3D;y），表示服务器已经收到客户端序号为x的报文段，准备接受客户端序列号为x+1的报文段（ack_seq&#x3D;x+1）；服务器由LISTEN进入SYN_RCVD （同步收到状态）;</p>
+<p><code>第三次</code>:客户对服务器的同一连接进行确认.确认序号字段有效(ACK&#x3D;1),客户此次的报文段的序列号是x+1(seq&#x3D;x+1),客户期望接受服务器序列号为y+1的报文段(ack_seq&#x3D;y+1);当客户发送ack时，客户端进入ESTABLISHED 状态;当服务收到客户发送的ack后，也进入ESTABLISHED状态;第三次握手可携带数据;</p>
+<h4 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h4><p>为操作系统或网络应用程序提供访问网络服务的接口。<br><strong>应用层重点：</strong></p>
+<ol>
+<li>数据传输基本单位为报文；</li>
+<li>包含的主要协议：FTP（文件传送协议）、Telnet（远程登录协议）、DNS（域名解析协议）、SMTP（邮件传送协议），POP3协议（邮局协议），HTTP协议（Hyper Text Transfer Protocol）。</li>
+</ol>
+<h5 id="DNS详解"><a href="#DNS详解" class="headerlink" title="DNS详解"></a>DNS详解</h5><p>DNS（Domain Name System:域名系统）【C&#x2F;S，UDP，端口53】：解决IP地址复杂难以记忆的问题,存储并完成自己所管辖范围内主机的 域名 到 IP 地址的映射。</p>
+<p>域名解析的顺序：<br>【1】浏览器缓存，</p>
+<p>【2】找本机的hosts文件，</p>
+<p>【3】路由缓存，</p>
+<p>【4】找DNS服务器（本地域名、顶级域名、根域名）-&gt;迭代解析、递归查询。</p>
+<h4 id="交换机原理与路由器基本工作原理"><a href="#交换机原理与路由器基本工作原理" class="headerlink" title="交换机原理与路由器基本工作原理"></a>交换机原理与路由器基本工作原理</h4><p>交换机<br>1.简单介绍交换机<br>这里的交换机主要讲的是 二层交换机。它工作在OSI七层模型中的第二层，也就是数据链路层。因此就不得不说一下数据链路层的功能：</p>
+<p>数据链路的建立维护拆除<br>帧包装帧传输帧同步<br>帧的差错恢复<br>流量控制<br>交换机主要有四个知识点需要掌握，其中分别是：</p>
+<p>交换机的初始状态<br>mac地址学习<br>广播未知数据帧<br>接收方回应<br>其实上面四个知识点后三个就是指代了交换机的工作原理</p>
+<p>2.mac地址表<br>对于每一个交换机来说，为了能让局域网内的主机能够互相通信，其中都会有一张 mac地址表，这张表中纪录了mac地址，接口，以及对应的vlan，其中交换机的初始状态是空，它的mac地址表的内容是在不断地学习中进行补充的，而不是与生俱来。</p>
+<p>路由器<br>1.简单介绍路由器<br>路由器工作在OSI模型的第三层，网络层，路由器的功能是为了实现在不同局域网中主机之间的通信。</p>
+<p>为了实现这个目的，路由器中引进的是路由表</p>
+<p>2.路由表<br>路由表是在路由器中维护的路由条目的集合，通信时通过路由表进行路径选择。</p>
+<p>路由表存储了接口信息和局域网标识（网络）信息，实际上包含了目标网段和自己的端口（或者下一跳地址）</p>
+<p>路由表中的信息如何生成呢？</p>
+<p>利用直连网络环境自动生成<br>利用手工配置方式（静态路由配置）<br>利用路由协议动态生成（动态路由配置）</p>
 
                 
               </div>
@@ -436,6 +498,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2022/10/22/learning%20diary/sql%E6%B3%A8%E5%85%A5/" title="SQL Injection">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">SQL Injection</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
