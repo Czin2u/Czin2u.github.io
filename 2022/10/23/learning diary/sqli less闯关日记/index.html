@@ -27,8 +27,20 @@
 <meta property="og:image" content="c:\Users\Crush\AppData\Roaming\Typora\typora-user-images\image-20221023205038210.png">
 <meta property="og:image" content="c:\Users\Crush\AppData\Roaming\Typora\typora-user-images\image-20221023210202281.png">
 <meta property="og:image" content="c:\Users\Crush\AppData\Roaming\Typora\typora-user-images\image-20221023210513670.png">
+<meta property="og:image" content="c:\Users\Crush\AppData\Roaming\Typora\typora-user-images\image-20221024182025299.png">
+<meta property="og:image" content="c:\Users\Crush\AppData\Roaming\Typora\typora-user-images\image-20221024182442814.png">
+<meta property="og:image" content="c:\Users\Crush\AppData\Roaming\Typora\typora-user-images\image-20221024182721997.png">
+<meta property="og:image" content="c:\Users\Crush\AppData\Roaming\Typora\typora-user-images\image-20221024184459938.png">
+<meta property="og:image" content="c:\Users\Crush\AppData\Roaming\Typora\typora-user-images\image-20221024184508914.png">
+<meta property="og:image" content="c:\Users\Crush\AppData\Roaming\Typora\typora-user-images\image-20221024184529731.png">
+<meta property="og:image" content="c:\Users\Crush\AppData\Roaming\Typora\typora-user-images\image-20221024195355974.png">
+<meta property="og:image" content="c:\Users\Crush\AppData\Roaming\Typora\typora-user-images\image-20221024201855753.png">
+<meta property="og:image" content="c:\Users\Crush\AppData\Roaming\Typora\typora-user-images\image-20221024203231646.png">
+<meta property="og:image" content="c:\Users\Crush\AppData\Roaming\Typora\typora-user-images\image-20221024205034782.png">
+<meta property="og:image" content="c:\Users\Crush\AppData\Roaming\Typora\typora-user-images\image-20221024210353622.png">
+<meta property="og:image" content="c:\Users\Crush\AppData\Roaming\Typora\typora-user-images\image-20221024214452782.png">
 <meta property="article:published_time" content="2022-10-22T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-10-23T13:27:37.483Z">
+<meta property="article:modified_time" content="2022-10-24T14:12:32.343Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="c:\Users\Crush\AppData\Roaming\Typora\typora-user-images\image-20221023203559549.png">
@@ -250,7 +262,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          671 words
+          1.5k words
         
       </span>
     
@@ -261,7 +273,7 @@
         
         
         
-          6 mins
+          13 mins
         
       </span>
     
@@ -334,7 +346,37 @@
 </li>
 </ol>
 <h2 id="less-6"><a href="#less-6" class="headerlink" title="less-6"></a>less-6</h2><p>less-5的闭包改为”$id”即可</p>
-<h2 id="less-7"><a href="#less-7" class="headerlink" title="less-7"></a>less-7</h2>
+<h2 id="less-7"><a href="#less-7" class="headerlink" title="less-7"></a>less-7</h2><h2 id="less-8"><a href="#less-8" class="headerlink" title="less-8"></a>less-8</h2><p>布尔盲注<br><img src="C:\Users\Crush\AppData\Roaming\Typora\typora-user-images\image-20221024182025299.png" srcset="/img/loading.gif" lazyload alt="image-20221024182025299"></p>
+<p>正确有回显且只有you are in 无法用联合注入,错误无回显,</p>
+<p><img src="C:\Users\Crush\AppData\Roaming\Typora\typora-user-images\image-20221024182442814.png" srcset="/img/loading.gif" lazyload alt="image-20221024182442814"></p>
+<p>数据库名为八位</p>
+<p><img src="C:\Users\Crush\AppData\Roaming\Typora\typora-user-images\image-20221024182721997.png" srcset="/img/loading.gif" lazyload alt="image-20221024182721997"></p>
+<p>数据库名第一位为”s”</p>
+<p>使用burpsuite爆破</p>
+<p><img src="C:\Users\Crush\AppData\Roaming\Typora\typora-user-images\image-20221024184459938.png" srcset="/img/loading.gif" lazyload alt="image-20221024184459938"></p>
+<p><img src="C:\Users\Crush\AppData\Roaming\Typora\typora-user-images\image-20221024184508914.png" srcset="/img/loading.gif" lazyload alt="image-20221024184508914"></p>
+<p><img src="C:\Users\Crush\AppData\Roaming\Typora\typora-user-images\image-20221024184529731.png" srcset="/img/loading.gif" lazyload alt="image-20221024184529731"></p>
+<p>请求8 的长与其他不一样说明database()库名长为8</p>
+<p>·Sniper（狙击手模式）：依次爆破，只能设置一个爆破点，比如知道了用户名就只对密码进行爆破。<br>·Battering ram（攻城锤模式）：同时爆破，可以设置多个爆破点，无论几个爆破点都共用一套字典，每次几个爆破点的值都相同。<br>·Pitchfork（叉子模式）：同时爆破，每个爆破点可用不同字典，一般按payload少的执行，比如payload1为9，payload2为10，执行9次。<br>·Cluster bomb（炸弹模式）：使用穷举法，对每个爆破点都遍历字典，适用于用户名和密码都不知道的情况。<br>例：标记三处，第一处字典3个，第二处字典2个，第三处字典3个，爆破次数：3<em>2</em>3</p>
+<p><img src="C:\Users\Crush\AppData\Roaming\Typora\typora-user-images\image-20221024195355974.png" srcset="/img/loading.gif" lazyload alt="image-20221024195355974"></p>
+<p>得到库名security</p>
+<p><img src="C:\Users\Crush\AppData\Roaming\Typora\typora-user-images\image-20221024201855753.png" srcset="/img/loading.gif" lazyload alt="image-20221024201855753"></p>
+<p>爆出四个表名 emails referers uagents users</p>
+<p><img src="C:\Users\Crush\AppData\Roaming\Typora\typora-user-images\image-20221024203231646.png" srcset="/img/loading.gif" lazyload alt="image-20221024203231646"></p>
+<p>爆出users表下的三个字段名 id username password</p>
+<p><img src="C:\Users\Crush\AppData\Roaming\Typora\typora-user-images\image-20221024205034782.png" srcset="/img/loading.gif" lazyload alt="image-20221024205034782"></p>
+<p>爆出用户id用户名密码 1 dumb dumb 2 angelina i-kill-you 3 dumm p@ssword</p>
+<p>布尔盲注到此结束</p>
+<h2 id="less-9"><a href="#less-9" class="headerlink" title="less-9"></a>less-9</h2><p>输什么页面都只有固定显示 报错注入联合注入布尔盲注均不可行 只有时间(延时)盲注可以</p>
+<p><img src="C:\Users\Crush\AppData\Roaming\Typora\typora-user-images\image-20221024210353622.png" srcset="/img/loading.gif" lazyload alt="image-20221024210353622"></p>
+<p>可以看出执行了sleep(5) 后台停止了五秒才返回结果</p>
+<p><a target="_blank" rel="noopener" href="http://127.0.0.1/sqli/Less-9/?id=1&#39;">http://127.0.0.1/sqli/Less-9/?id=1&#39;</a> </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">and</span> if(substr((<span class="hljs-keyword">select</span> table_name <span class="hljs-keyword">from</span> information_schema.tables <span class="hljs-keyword">where</span> table_schema<span class="hljs-operator">=</span>&quot;security&quot; limit <span class="hljs-number">0</span>,<span class="hljs-number">1</span>),sleep(<span class="hljs-number">5</span>),<span class="hljs-number">1</span>)<span class="hljs-operator">=</span>&quot;#&quot;,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>) <span class="hljs-comment">--+</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\Crush\AppData\Roaming\Typora\typora-user-images\image-20221024214452782.png" srcset="/img/loading.gif" lazyload alt="image-20221024214452782"></p>
+<p>爆出users表的列名 emails referers uagents users </p>
+<p>核心语句和布尔盲注差不多 后续再爆表字段数字段名</p>
+<h2 id="less"><a href="#less" class="headerlink" title="less"></a>less</h2>
                 
               </div>
             
@@ -395,12 +437,6 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
-                    
-                      <a href="/2022/10/23/learning%20diary/Burpsuite%20introduction/" title="burpsuite introduction">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">burpsuite introduction</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
                     
                   </article>
                   <article class="post-next col-6">
