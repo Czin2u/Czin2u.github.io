@@ -42,8 +42,9 @@
 <meta property="og:image" content="c:\Users\Crush\AppData\Roaming\Typora\typora-user-images\image-20221024203231646.png">
 <meta property="og:image" content="c:\Users\Crush\AppData\Roaming\Typora\typora-user-images\image-20221024205034782.png">
 <meta property="og:image" content="c:\Users\Crush\AppData\Roaming\Typora\typora-user-images\image-20221024214452782.png">
+<meta property="og:image" content="c:\Users\Crush\AppData\Roaming\Typora\typora-user-images\image-20221025170248136.png">
 <meta property="article:published_time" content="2022-10-21T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-10-24T13:47:53.064Z">
+<meta property="article:modified_time" content="2022-10-25T09:02:51.342Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="c:\Users\Crush\AppData\Roaming\Typora\typora-user-images\image-20221023213612187.png">
@@ -265,7 +266,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4k words
+          4.5k words
         
       </span>
     
@@ -276,7 +277,7 @@
         
         
         
-          34 mins
+          38 mins
         
       </span>
     
@@ -441,6 +442,21 @@
 <p>核心语句和布尔盲注差不多</p>
 </li>
 </ul>
+<h3 id="宽字节注入"><a href="#宽字节注入" class="headerlink" title="宽字节注入"></a>宽字节注入</h3><p>涉及函数php调以下函数对用户输入内容作过滤,对特殊字符加上”&quot;作转义,处理后再给mysql</p>
+<ul>
+<li>addslashes() 返回添加反斜杠以后的字符串</li>
+<li>mysql_real_escape_string() 转义sql语句中使用的字符串中的特殊字符</li>
+<li>mysql_escape_string() 转义一个字符串</li>
+</ul>
+<h4 id="什么是宽字节注入"><a href="#什么是宽字节注入" class="headerlink" title="什么是宽字节注入?"></a>什么是宽字节注入?</h4><ul>
+<li><p>宽字节是相对于ascII这样单字节而言的；像 GB2312、GBK、GB18030、BIG5、Shift_JIS 等这些都是常说的宽字节，实际上只有两字节。GBK 是一种多字符的编码，通常来说，一个 gbk 编码汉字，占用2个字节。一个 utf-8 编码的汉字，占用3个字节。</p>
+</li>
+<li><p>转义函数：为了过滤用户输入的一些数据，对特殊的字符加上反斜杠“\”进行转义；</p>
+</li>
+<li><p>宽字节注入指的是 mysql 数据库在使用宽字节（GBK）编码时，会认为两个字符是一个汉字（前一个ascii码要大于128（比如%df），才到汉字的范围），而且当我们输入单引号时，mysql会调用转义函数，将单引号变为’，其中\的十六进制是%5c,mysql的GBK编码，会认为%df%5c是一个宽字节，也就是’運’，从而使单引号闭合（逃逸），进行注入攻击。</p>
+</li>
+</ul>
+<p><img src="C:\Users\Crush\AppData\Roaming\Typora\typora-user-images\image-20221025170248136.png" srcset="/img/loading.gif" lazyload alt="image-20221025170248136"></p>
 
                 
               </div>
