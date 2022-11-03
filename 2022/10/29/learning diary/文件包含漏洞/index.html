@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://img-blog.csdnimg.cn/65f354f2a2774be9b74c3f3940b8e0b3.png">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/4737e3fbbbae4ebda4d419264e9e556c.png">
 <meta property="article:published_time" content="2022-10-28T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-10-29T17:17:00.863Z">
+<meta property="article:modified_time" content="2022-11-03T09:15:45.781Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://img-blog.csdnimg.cn/cbc0f2c94dd84c7db45f3ece931e174f.png">
@@ -366,7 +366,7 @@
 </li>
 <li><p>data:&#x2F;&#x2F; 同样类似与php:&#x2F;&#x2F;input，可以让用户来控制输入流，当它与包含函数结合时，用户输入的data:&#x2F;&#x2F;流会被当作php文件执行。从而导致任意代码执行。</p>
 <p>利用data:&#x2F;&#x2F; 伪协议可以直接达到执行php代码的效果，例如执行phpinfo()函数：<br>利用条件:</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs php">allow_url_fopen ：on<br>allow_url_include：ondata:<span class="hljs-comment">//text/plain,&lt;?php phpinfo();?&gt;</span><br><span class="hljs-comment">//如果此处对特殊字符进行了过滤，我们还可以通过base64编码后再输入：</span><br>data:<span class="hljs-comment">//text/plain;base64,PD9waHAgcGhwaW5mbygpPz4=</span><br></code></pre></td></tr></table></figure></li>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs php">allow_url_fopen ：on<br>allow_url_include：on data:<span class="hljs-comment">//text/plain,&lt;?php phpinfo();?&gt;</span><br><span class="hljs-comment">//如果此处对特殊字符进行了过滤，我们还可以通过base64编码后再输入：</span><br>data:<span class="hljs-comment">//text/plain;base64,PD9waHAgcGhwaW5mbygpPz4=</span><br></code></pre></td></tr></table></figure></li>
 </ol>
 <p><img src="https://img-blog.csdnimg.cn/4737e3fbbbae4ebda4d419264e9e556c.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
 

