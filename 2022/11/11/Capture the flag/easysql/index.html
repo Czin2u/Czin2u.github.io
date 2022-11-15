@@ -16,27 +16,26 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="一.CSRF概念​        CSRF（Cross-site request forgery），中文名称：跨站请求伪造，也被称为：one click attack&#x2F;session riding，缩写为：CSRF&#x2F;XSRF。 二.漏洞原理 从上图可以看出,要完成一次csrf攻击,要满足条件  受害者登录了已被信任的网站A 受害者访问危险网站B  总的就是,攻击者利用了你已被信">
+    <meta name="description" content="没点经验我怎么猜得出来哦…  post传输  输入什么数字就回显什么数字, 查询语句应该有 select $var from 表名,  很多关键字全被过滤,盲注联合什么的都不用考虑了,优先考虑堆叠注入   可以爆出来Flag表,但flag字段被过滤,查不到该表内容  看wp吧  要根据回显推测出查询语句为 select 数字||flag from Flag; 然后对于mysql select 1|">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSRF跨站请求伪造">
-<meta property="og:url" content="http://example.com/2022/11/03/learning%20diary/CSRF/index.html">
+<meta property="og:title" content="easysql suctf">
+<meta property="og:url" content="http://example.com/2022/11/11/Capture%20the%20flag/easysql/index.html">
 <meta property="og:site_name" content="Czin2u✈️✈️✈️">
-<meta property="og:description" content="一.CSRF概念​        CSRF（Cross-site request forgery），中文名称：跨站请求伪造，也被称为：one click attack&#x2F;session riding，缩写为：CSRF&#x2F;XSRF。 二.漏洞原理 从上图可以看出,要完成一次csrf攻击,要满足条件  受害者登录了已被信任的网站A 受害者访问危险网站B  总的就是,攻击者利用了你已被信">
+<meta property="og:description" content="没点经验我怎么猜得出来哦…  post传输  输入什么数字就回显什么数字, 查询语句应该有 select $var from 表名,  很多关键字全被过滤,盲注联合什么的都不用考虑了,优先考虑堆叠注入   可以爆出来Flag表,但flag字段被过滤,查不到该表内容  看wp吧  要根据回显推测出查询语句为 select 数字||flag from Flag; 然后对于mysql select 1|">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/0350aa6a64b56f5d992c29517c8cc32a.png">
-<meta property="og:image" content="http://example.com/2022/11/03/learning%20diary/CSRF/image-20221104173103144.png">
-<meta property="og:image" content="http://example.com/2022/11/03/learning%20diary/CSRF/image-20221104173203873.png">
-<meta property="og:image" content="http://example.com/2022/11/03/learning%20diary/CSRF/image-20221104173328509.png">
-<meta property="og:image" content="http://example.com/2022/11/03/learning%20diary/CSRF/image-20221104214955013.png">
-<meta property="article:published_time" content="2022-11-03T14:43:53.491Z">
-<meta property="article:modified_time" content="2022-11-04T15:03:16.916Z">
+<meta property="og:image" content="http://example.com/2022/11/11/Capture%20the%20flag/easysql/image-20221111165007579.png">
+<meta property="og:image" content="http://example.com/2022/11/11/Capture%20the%20flag/easysql/image-20221111165219397.png">
+<meta property="og:image" content="http://example.com/2022/11/11/Capture%20the%20flag/easysql/image-20221111170508587.png">
+<meta property="og:image" content="http://example.com/2022/11/11/Capture%20the%20flag/easysql/image-20221111171125051.png">
+<meta property="article:published_time" content="2022-11-11T08:34:11.389Z">
+<meta property="article:modified_time" content="2022-11-11T09:13:37.332Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/img_convert/0350aa6a64b56f5d992c29517c8cc32a.png">
+<meta name="twitter:image" content="http://example.com/2022/11/11/Capture%20the%20flag/easysql/image-20221111165007579.png">
   
   
   
-  <title>CSRF跨站请求伪造 - Czin2u✈️✈️✈️</title>
+  <title>easysql suctf - Czin2u✈️✈️✈️</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -228,7 +227,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="CSRF跨站请求伪造"></span>
+            <span id="subtitle" data-typed-text="easysql suctf"></span>
           
         </div>
 
@@ -239,8 +238,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-11-03 22:43" pubdate>
-          November 3, 2022 pm
+        <time datetime="2022-11-11 16:34" pubdate>
+          November 11, 2022 pm
         </time>
       </span>
     
@@ -251,7 +250,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.5k words
+          246 words
         
       </span>
     
@@ -262,7 +261,7 @@
         
         
         
-          13 mins
+          3 mins
         
       </span>
     
@@ -300,40 +299,32 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">CSRF跨站请求伪造</h1>
+            <h1 style="display: none">easysql suctf</h1>
             
             
               <div class="markdown-body">
                 
-                <h3 id="一-CSRF概念"><a href="#一-CSRF概念" class="headerlink" title="一.CSRF概念"></a>一.CSRF概念</h3><p>​        CSRF（Cross-site request forgery），中文名称：跨站请求伪造，也被称为：one click attack&#x2F;<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=session&spm=1001.2101.3001.7020">session</a> riding，缩写为：CSRF&#x2F;XSRF。</p>
-<h3 id="二-漏洞原理"><a href="#二-漏洞原理" class="headerlink" title="二.漏洞原理"></a>二.漏洞原理</h3><p><img src="https://img-blog.csdnimg.cn/img_convert/0350aa6a64b56f5d992c29517c8cc32a.png" srcset="/img/loading.gif" lazyload alt="img"></p>
-<p>从上图可以看出,要完成一次csrf攻击,要满足条件</p>
+                <p>没点经验我怎么猜得出来哦…</p>
 <ol>
-<li>受害者登录了已被信任的网站A</li>
-<li>受害者访问危险网站B</li>
-</ol>
-<p>总的就是,攻击者利用了你已被信任的身份向网站A发送了恶意请求,网站A服务器执行了请求</p>
-<h3 id="三-漏洞示例"><a href="#三-漏洞示例" class="headerlink" title="三.漏洞示例"></a>三.漏洞示例</h3><p>以pikachu平台为例</p>
-<h4 id="csrf-get"><a href="#csrf-get" class="headerlink" title="csrf-get"></a>csrf-get</h4><p><img src="/2022/11/03/learning%20diary/CSRF/image-20221104173103144.png" srcset="/img/loading.gif" lazyload alt="image-20221104173103144"></p>
-<p>正常用户登录网站A,服务器传来cookie,该用户身份被信任</p>
-<p><img src="/2022/11/03/learning%20diary/CSRF/image-20221104173203873.png" srcset="/img/loading.gif" lazyload alt="image-20221104173203873"></p>
-<p>修改用户信息,通过get方式传参</p>
-<p>存在csrf漏洞,新建网站B包含代码 </p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;http://127.0.0.1/pikachu-master/vul/csrf/csrfget/csrf_get_edit.php?sex=你必狂吃不胖&amp;phonenum=你必越长越好看&amp;add=你必天天捡钱&amp;email=你必好运连连&amp;submit=submit&quot;</span>&gt;</span>美女荷官，在线发牌，百万影片你想要的这里都有<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>;<br></code></pre></td></tr></table></figure>
-
-<p><img src="/2022/11/03/learning%20diary/CSRF/image-20221104173328509.png" srcset="/img/loading.gif" lazyload alt="image-20221104173328509"></p>
-<p>当用户点击B网站链接,则A网站用户信息被更改,完成一次csrf攻击</p>
-<h4 id="csrf-post"><a href="#csrf-post" class="headerlink" title="csrf-post"></a>csrf-post</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;http://127.0.0.1/pikachu-master/vul/csrf/csrfpost/csrf_post_edit.php&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;haode&quot;</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;post&quot;</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;txt&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;sex&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;xxx&quot;</span>/&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;txt&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;phonenum&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;xxx&quot;</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;txt&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;add&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;xxx&quot;</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;txt&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;email&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;xxx&quot;</span>&gt;</span> <br>      <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>美女荷官，在线发牌，百万影片你想要的这里都有<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;submit&quot;</span>&gt;</span><br>    <br>  <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span><br></code></pre></td></tr></table></figure>
-
-<p>只是提交方式不同</p>
-<h4 id="csrf-token"><a href="#csrf-token" class="headerlink" title="csrf-token"></a>csrf-token</h4><ol>
-<li><p>token是一个字符串,信任用户后,服务器首次传回数据会有一个随机生成的字符串token,接下来客户端每次请求都需要带上token,服务器会检查请求中的token是否合法,前面的get,post等方法是行不通的,js等语言是不能调用另一个窗口的数据,他们遵循同源策略</p>
-<p>同源策略:同源策略是指同源的脚本才能互相调用dom树、cookie、token的情况。下面是判断两个脚本同源的条件。</p>
-<p>1.协议：比如用http协议的网站文件不能调用用https协议的网站文件。<br>2.域名：比如一个域名是forming.com那么与handsome.com就不遵守同源协议。值得一提的是一级域名与二级域名之间也是不遵守同源策略的，比如forming.com和handsome.forming.com之间也不遵守同源策略。<br>3.端口</p>
+<li><p>post传输<img src="/2022/11/11/Capture%20the%20flag/easysql/image-20221111165007579.png" srcset="/img/loading.gif" lazyload alt="image-20221111165007579"></p>
 </li>
-<li><p>每次发完请求token都会被更新</p>
-<p><img src="/2022/11/03/learning%20diary/CSRF/image-20221104214955013.png" srcset="/img/loading.gif" lazyload alt="image-20221104214955013"></p>
-<p>防止csrf示例</p>
+<li><p>输入什么数字就回显什么数字, 查询语句应该有 select $var from 表名,</p>
+</li>
+<li><p>很多关键字全被过滤,盲注联合什么的都不用考虑了,优先考虑堆叠注入</p>
+</li>
+<li><p><img src="/2022/11/11/Capture%20the%20flag/easysql/image-20221111165219397.png" srcset="/img/loading.gif" lazyload alt="image-20221111165219397"></p>
+<p>可以爆出来Flag表,但flag字段被过滤,查不到该表内容</p>
+</li>
+<li><p>看wp吧</p>
+</li>
+<li><p>要根据回显推测出查询语句为 select 数字||flag from Flag;</p>
+<p>然后对于mysql select 1||flag from Flag 的执行顺序</p>
+<p><img src="/2022/11/11/Capture%20the%20flag/easysql/image-20221111170508587.png" srcset="/img/loading.gif" lazyload alt="image-20221111170508587"></p>
+<p>所以构造payload:  *,1 </p>
+<p>第二种方法 有点儿超出认知了</p>
+<p><img src="/2022/11/11/Capture%20the%20flag/easysql/image-20221111171125051.png" srcset="/img/loading.gif" lazyload alt="image-20221111171125051"></p>
+</li>
+<li><p>学到了要会猜 你要学会揣测出题人的心思,才能如鱼得水</p>
 </li>
 </ol>
 
@@ -353,8 +344,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>CSRF跨站请求伪造</div>
-      <div>http://example.com/2022/11/03/learning diary/CSRF/</div>
+      <div>easysql suctf</div>
+      <div>http://example.com/2022/11/11/Capture the flag/easysql/</div>
     </div>
     <div class="license-meta">
       
@@ -366,7 +357,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>November 3, 2022</div>
+          <div>November 11, 2022</div>
         </div>
       
       
@@ -398,9 +389,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/11/04/learning%20diary/SSRF/" title="SSRF">
+                      <a href="/2022/11/11/Capture%20the%20flag/pingpingping/" title="pingpingping">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">SSRF</span>
+                        <span class="hidden-mobile">pingpingping</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -408,8 +399,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/" title="XSS跨站式脚本攻击">
-                        <span class="hidden-mobile">XSS跨站式脚本攻击</span>
+                      <a href="/2022/11/10/Capture%20the%20flag/buuctf/" title="强网杯 随便注">
+                        <span class="hidden-mobile">强网杯 随便注</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

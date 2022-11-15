@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://img-blog.csdnimg.cn/65f354f2a2774be9b74c3f3940b8e0b3.png">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/4737e3fbbbae4ebda4d419264e9e556c.png">
 <meta property="article:published_time" content="2022-10-28T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-11-03T09:15:45.781Z">
+<meta property="article:modified_time" content="2022-11-09T12:11:15.481Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://img-blog.csdnimg.cn/cbc0f2c94dd84c7db45f3ece931e174f.png">
@@ -347,7 +347,7 @@
 <li><p><strong>file:&#x2F;&#x2F;</strong> 用于访问本地文件系统，在CTF中通常用来读取本地文件的且不受allow_url_fopen与allow_url_include的影响</p>
 </li>
 <li><p>php:&#x2F;&#x2F; 访问各个输入&#x2F;输出流（I&#x2F;O streams），在CTF中经常使用的是php:&#x2F;&#x2F;filter和php:&#x2F;&#x2F;input<br>php:&#x2F;&#x2F;filter用于读取源码。<br>php:&#x2F;&#x2F;input用于执行php代码。</p>
-<p>php:&#x2F;&#x2F;filter 读取源代码并进行base64编码输出，不然会直接当做php代码执行就看不到源代码内容了。<br>利用条件:</p>
+<h4 id="php-x2F-x2F-filter-读取源代码并进行base64编码输出，不然会直接当做php代码执行就看不到源代码内容了。"><a href="#php-x2F-x2F-filter-读取源代码并进行base64编码输出，不然会直接当做php代码执行就看不到源代码内容了。" class="headerlink" title="php:&#x2F;&#x2F;filter 读取源代码并进行base64编码输出，不然会直接当做php代码执行就看不到源代码内容了。"></a>php:&#x2F;&#x2F;filter 读取源代码并进行base64编码输出，不然会直接当做php代码执行就看不到源代码内容了。</h4><p>利用条件:</p>
 <ul>
 <li>allow_url_fopen ：off&#x2F;on</li>
 <li>allow_url_include：off&#x2F;on</li>
@@ -356,7 +356,7 @@
 <p>他只显示了一条语句，这时候我们可以以base64编码的方式读取指定文件的源码:</p>
 <p>输入<br>  php:&#x2F;&#x2F;filter&#x2F;convert.base64-encode&#x2F;resource&#x3D;文件路径<br>得到2.php加密后的源码：<img src="https://img-blog.csdnimg.cn/b667bf338aab4e82bcf72ad77472b3f0.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
 <p>再进行base64解码，获取到2.php的完整源码信息：<img src="https://img-blog.csdnimg.cn/65f354f2a2774be9b74c3f3940b8e0b3.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
-<p>php:&#x2F;&#x2F;input 可以访问请求的原始数据的只读流, 将post请求中的数据作为PHP代码执行。当传入的参数作为文件名打开时，可以将参数设为php:&#x2F;&#x2F;input,同时post想设置的文件内容，php执行时会将post内容当作文件内容。从而导致任意代码执行。<br>利用条件:</p>
+<h4 id="php-x2F-x2F-input-可以访问请求的原始数据的只读流-将post请求中的数据作为PHP代码执行。当传入的参数作为文件名打开时，可以将参数设为php-x2F-x2F-input-同时post想设置的文件内容，php执行时会将post内容当作文件内容。从而导致任意代码执行。"><a href="#php-x2F-x2F-input-可以访问请求的原始数据的只读流-将post请求中的数据作为PHP代码执行。当传入的参数作为文件名打开时，可以将参数设为php-x2F-x2F-input-同时post想设置的文件内容，php执行时会将post内容当作文件内容。从而导致任意代码执行。" class="headerlink" title="php:&#x2F;&#x2F;input 可以访问请求的原始数据的只读流, 将post请求中的数据作为PHP代码执行。当传入的参数作为文件名打开时，可以将参数设为php:&#x2F;&#x2F;input,同时post想设置的文件内容，php执行时会将post内容当作文件内容。从而导致任意代码执行。"></a>php:&#x2F;&#x2F;input 可以访问请求的原始数据的只读流, 将post请求中的数据作为PHP代码执行。当传入的参数作为文件名打开时，可以将参数设为php:&#x2F;&#x2F;input,同时post想设置的文件内容，php执行时会将post内容当作文件内容。从而导致任意代码执行。</h4><p>利用条件:</p>
 <p>allow_url_fopen ：off&#x2F;on<br>allow_url_include：on</p>
 </li>
 <li><p>zip:&#x2F;&#x2F; 可以访问压缩包里面的文件。当它与包含函数结合时，zip:&#x2F;&#x2F;流会被当作php文件执行。从而实现任意代码执行。</p>

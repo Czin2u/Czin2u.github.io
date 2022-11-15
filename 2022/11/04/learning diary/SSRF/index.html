@@ -16,27 +16,26 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="一.CSRF概念​        CSRF（Cross-site request forgery），中文名称：跨站请求伪造，也被称为：one click attack&#x2F;session riding，缩写为：CSRF&#x2F;XSRF。 二.漏洞原理 从上图可以看出,要完成一次csrf攻击,要满足条件  受害者登录了已被信任的网站A 受害者访问危险网站B  总的就是,攻击者利用了你已被信">
+    <meta name="description" content="一 ssrf概念​        SSRF(service-side request forgrey)服务端请求伪造 攻击者构造,服务器发起请求的安全漏洞,ssrf攻击外网无法访问的内部系统. ​         服务器发起的请求,它能访问到与它相连的与外网隔离的内部系统. 二 ssrf原理​        服务端提供了从其它地方获取数据的功能,而且对目标地址没有做过滤和限制 ​">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSRF跨站请求伪造">
-<meta property="og:url" content="http://example.com/2022/11/03/learning%20diary/CSRF/index.html">
+<meta property="og:title" content="SSRF">
+<meta property="og:url" content="http://example.com/2022/11/04/learning%20diary/SSRF/index.html">
 <meta property="og:site_name" content="Czin2u✈️✈️✈️">
-<meta property="og:description" content="一.CSRF概念​        CSRF（Cross-site request forgery），中文名称：跨站请求伪造，也被称为：one click attack&#x2F;session riding，缩写为：CSRF&#x2F;XSRF。 二.漏洞原理 从上图可以看出,要完成一次csrf攻击,要满足条件  受害者登录了已被信任的网站A 受害者访问危险网站B  总的就是,攻击者利用了你已被信">
+<meta property="og:description" content="一 ssrf概念​        SSRF(service-side request forgrey)服务端请求伪造 攻击者构造,服务器发起请求的安全漏洞,ssrf攻击外网无法访问的内部系统. ​         服务器发起的请求,它能访问到与它相连的与外网隔离的内部系统. 二 ssrf原理​        服务端提供了从其它地方获取数据的功能,而且对目标地址没有做过滤和限制 ​">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/0350aa6a64b56f5d992c29517c8cc32a.png">
-<meta property="og:image" content="http://example.com/2022/11/03/learning%20diary/CSRF/image-20221104173103144.png">
-<meta property="og:image" content="http://example.com/2022/11/03/learning%20diary/CSRF/image-20221104173203873.png">
-<meta property="og:image" content="http://example.com/2022/11/03/learning%20diary/CSRF/image-20221104173328509.png">
-<meta property="og:image" content="http://example.com/2022/11/03/learning%20diary/CSRF/image-20221104214955013.png">
-<meta property="article:published_time" content="2022-11-03T14:43:53.491Z">
-<meta property="article:modified_time" content="2022-11-04T15:03:16.916Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2021062314464726.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N5Y2Ftb3JlbGc=,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="http://example.com/2022/11/04/learning%20diary/SSRF/image-20221106162034123.png">
+<meta property="og:image" content="http://example.com/2022/11/04/learning%20diary/SSRF/image-20221106162045778.png">
+<meta property="og:image" content="http://example.com/2022/11/04/learning%20diary/SSRF/image-20221106162538770.png">
+<meta property="article:published_time" content="2022-11-04T15:05:22.387Z">
+<meta property="article:modified_time" content="2022-11-06T09:42:33.412Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/img_convert/0350aa6a64b56f5d992c29517c8cc32a.png">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/2021062314464726.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N5Y2Ftb3JlbGc=,size_16,color_FFFFFF,t_70">
   
   
   
-  <title>CSRF跨站请求伪造 - Czin2u✈️✈️✈️</title>
+  <title>SSRF - Czin2u✈️✈️✈️</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -228,7 +227,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="CSRF跨站请求伪造"></span>
+            <span id="subtitle" data-typed-text="SSRF"></span>
           
         </div>
 
@@ -239,8 +238,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-11-03 22:43" pubdate>
-          November 3, 2022 pm
+        <time datetime="2022-11-04 23:05" pubdate>
+          November 4, 2022 pm
         </time>
       </span>
     
@@ -251,7 +250,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.5k words
+          2.2k words
         
       </span>
     
@@ -262,7 +261,7 @@
         
         
         
-          13 mins
+          19 mins
         
       </span>
     
@@ -300,42 +299,49 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">CSRF跨站请求伪造</h1>
+            <h1 style="display: none">SSRF</h1>
             
             
               <div class="markdown-body">
                 
-                <h3 id="一-CSRF概念"><a href="#一-CSRF概念" class="headerlink" title="一.CSRF概念"></a>一.CSRF概念</h3><p>​        CSRF（Cross-site request forgery），中文名称：跨站请求伪造，也被称为：one click attack&#x2F;<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=session&spm=1001.2101.3001.7020">session</a> riding，缩写为：CSRF&#x2F;XSRF。</p>
-<h3 id="二-漏洞原理"><a href="#二-漏洞原理" class="headerlink" title="二.漏洞原理"></a>二.漏洞原理</h3><p><img src="https://img-blog.csdnimg.cn/img_convert/0350aa6a64b56f5d992c29517c8cc32a.png" srcset="/img/loading.gif" lazyload alt="img"></p>
-<p>从上图可以看出,要完成一次csrf攻击,要满足条件</p>
-<ol>
-<li>受害者登录了已被信任的网站A</li>
-<li>受害者访问危险网站B</li>
-</ol>
-<p>总的就是,攻击者利用了你已被信任的身份向网站A发送了恶意请求,网站A服务器执行了请求</p>
-<h3 id="三-漏洞示例"><a href="#三-漏洞示例" class="headerlink" title="三.漏洞示例"></a>三.漏洞示例</h3><p>以pikachu平台为例</p>
-<h4 id="csrf-get"><a href="#csrf-get" class="headerlink" title="csrf-get"></a>csrf-get</h4><p><img src="/2022/11/03/learning%20diary/CSRF/image-20221104173103144.png" srcset="/img/loading.gif" lazyload alt="image-20221104173103144"></p>
-<p>正常用户登录网站A,服务器传来cookie,该用户身份被信任</p>
-<p><img src="/2022/11/03/learning%20diary/CSRF/image-20221104173203873.png" srcset="/img/loading.gif" lazyload alt="image-20221104173203873"></p>
-<p>修改用户信息,通过get方式传参</p>
-<p>存在csrf漏洞,新建网站B包含代码 </p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;http://127.0.0.1/pikachu-master/vul/csrf/csrfget/csrf_get_edit.php?sex=你必狂吃不胖&amp;phonenum=你必越长越好看&amp;add=你必天天捡钱&amp;email=你必好运连连&amp;submit=submit&quot;</span>&gt;</span>美女荷官，在线发牌，百万影片你想要的这里都有<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>;<br></code></pre></td></tr></table></figure>
+                <h2 id="一-ssrf概念"><a href="#一-ssrf概念" class="headerlink" title="一 ssrf概念"></a>一 ssrf概念</h2><p>​        SSRF(service-side request forgrey)服务端请求伪造 攻击者构造,服务器发起请求的安全漏洞,ssrf攻击外网无法访问的内部系统.</p>
+<p>​         服务器发起的请求,它能访问到与它相连的与外网隔离的内部系统.</p>
+<h2 id="二-ssrf原理"><a href="#二-ssrf原理" class="headerlink" title="二 ssrf原理"></a>二 ssrf原理</h2><p>​        服务端提供了从其它地方获取数据的功能,而且对目标地址没有做过滤和限制</p>
+<p>​         比如,黑客操作服务端从指定URL地址获取网页文本内容，加载指定地址的图片，下载等等。利用的是服务端的请求伪造。ssrf是利用存在缺陷的web应用作为代理攻击远程和本地的服务器</p>
+<p><img src="https://img-blog.csdnimg.cn/2021062314464726.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N5Y2Ftb3JlbGc=,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h2 id="三-产生ssrf漏洞的函数"><a href="#三-产生ssrf漏洞的函数" class="headerlink" title="三 产生ssrf漏洞的函数"></a>三 产生ssrf漏洞的函数</h2><p>​        SSRF攻击可能存在任何语言编写的应用，接下来将举例php中可能存在SSRF漏洞的函数。</p>
+<p>​        <strong>1、file_get_contents:</strong></p>
+<p>下面的代码使用file_get_contents函数从用户指定的url获取图片。然后把它用一个随即文件名保存在硬盘上，并展示给用户。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;url&#x27;</span>])) <br>&#123; <br><span class="hljs-variable">$content</span> = <span class="hljs-title function_ invoke__">file_get_contents</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;url&#x27;</span>]); <br><span class="hljs-variable">$filename</span> =<span class="hljs-string">&#x27;./images/&#x27;</span>.<span class="hljs-title function_ invoke__">rand</span>().<span class="hljs-string">&#x27;;img1.jpg&#x27;</span>; <br><span class="hljs-title function_ invoke__">file_put_contents</span>(<span class="hljs-variable">$filename</span>, <span class="hljs-variable">$content</span>); <br><span class="hljs-keyword">echo</span> <span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;url&#x27;</span>]; <br><span class="hljs-variable">$img</span> = <span class="hljs-string">&quot;&lt;img src=\&quot;&quot;</span>.<span class="hljs-variable">$filename</span>.<span class="hljs-string">&quot;\&quot;/&gt;&quot;</span>; <br>&#125; <br><span class="hljs-keyword">echo</span> <span class="hljs-variable">$img</span>; <br><span class="hljs-meta">?&gt;</span><br><br></code></pre></td></tr></table></figure>
 
-<p><img src="/2022/11/03/learning%20diary/CSRF/image-20221104173328509.png" srcset="/img/loading.gif" lazyload alt="image-20221104173328509"></p>
-<p>当用户点击B网站链接,则A网站用户信息被更改,完成一次csrf攻击</p>
-<h4 id="csrf-post"><a href="#csrf-post" class="headerlink" title="csrf-post"></a>csrf-post</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;http://127.0.0.1/pikachu-master/vul/csrf/csrfpost/csrf_post_edit.php&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;haode&quot;</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;post&quot;</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;txt&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;sex&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;xxx&quot;</span>/&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;txt&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;phonenum&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;xxx&quot;</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;txt&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;add&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;xxx&quot;</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;txt&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;email&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;xxx&quot;</span>&gt;</span> <br>      <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>美女荷官，在线发牌，百万影片你想要的这里都有<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;submit&quot;</span>&gt;</span><br>    <br>  <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>​        <strong>2、sockopen():</strong></p>
+<p>以下代码使用fsockopen函数实现获取用户制定url的数据（文件或者html）。这个函数会使用socket跟服务器建立tcp连接，传输原始数据。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span> <br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">GetFile</span>(<span class="hljs-params"><span class="hljs-variable">$host</span>,<span class="hljs-variable">$port</span>,<span class="hljs-variable">$link</span></span>) </span><br><span class="hljs-function"></span>&#123; <br><span class="hljs-variable">$fp</span> = <span class="hljs-title function_ invoke__">fsockopen</span>(<span class="hljs-variable">$host</span>, <span class="hljs-title function_ invoke__">intval</span>(<span class="hljs-variable">$port</span>), <span class="hljs-variable">$errno</span>, <span class="hljs-variable">$errstr</span>, <span class="hljs-number">30</span>); <br><span class="hljs-keyword">if</span> (!<span class="hljs-variable">$fp</span>) &#123; <br><span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;<span class="hljs-subst">$errstr</span> (error number <span class="hljs-subst">$errno</span>) \n&quot;</span>; <br>&#125; <span class="hljs-keyword">else</span> &#123; <br><span class="hljs-variable">$out</span> = <span class="hljs-string">&quot;GET <span class="hljs-subst">$link</span> HTTP/1.1\r\n&quot;</span>; <br><span class="hljs-variable">$out</span> .= <span class="hljs-string">&quot;Host: <span class="hljs-subst">$host</span>\r\n&quot;</span>; <br><span class="hljs-variable">$out</span> .= <span class="hljs-string">&quot;Connection: Close\r\n\r\n&quot;</span>; <br><span class="hljs-variable">$out</span> .= <span class="hljs-string">&quot;\r\n&quot;</span>; <br><span class="hljs-title function_ invoke__">fwrite</span>(<span class="hljs-variable">$fp</span>, <span class="hljs-variable">$out</span>); <br><span class="hljs-variable">$contents</span>=<span class="hljs-string">&#x27;&#x27;</span>; <br><span class="hljs-keyword">while</span> (!<span class="hljs-title function_ invoke__">feof</span>(<span class="hljs-variable">$fp</span>)) &#123; <br><span class="hljs-variable">$contents</span>.= <span class="hljs-title function_ invoke__">fgets</span>(<span class="hljs-variable">$fp</span>, <span class="hljs-number">1024</span>); <br>&#125; <br><span class="hljs-title function_ invoke__">fclose</span>(<span class="hljs-variable">$fp</span>); <br><span class="hljs-keyword">return</span> <span class="hljs-variable">$contents</span>; <br>&#125; <br>&#125;<br><span class="hljs-meta">?&gt;</span><br><br></code></pre></td></tr></table></figure>
 
-<p>只是提交方式不同</p>
-<h4 id="csrf-token"><a href="#csrf-token" class="headerlink" title="csrf-token"></a>csrf-token</h4><ol>
-<li><p>token是一个字符串,信任用户后,服务器首次传回数据会有一个随机生成的字符串token,接下来客户端每次请求都需要带上token,服务器会检查请求中的token是否合法,前面的get,post等方法是行不通的,js等语言是不能调用另一个窗口的数据,他们遵循同源策略</p>
-<p>同源策略:同源策略是指同源的脚本才能互相调用dom树、cookie、token的情况。下面是判断两个脚本同源的条件。</p>
-<p>1.协议：比如用http协议的网站文件不能调用用https协议的网站文件。<br>2.域名：比如一个域名是forming.com那么与handsome.com就不遵守同源协议。值得一提的是一级域名与二级域名之间也是不遵守同源策略的，比如forming.com和handsome.forming.com之间也不遵守同源策略。<br>3.端口</p>
-</li>
-<li><p>每次发完请求token都会被更新</p>
-<p><img src="/2022/11/03/learning%20diary/CSRF/image-20221104214955013.png" srcset="/img/loading.gif" lazyload alt="image-20221104214955013"></p>
-<p>防止csrf示例</p>
-</li>
+<p>​       <strong>3、curl_exec():</strong></p>
+<p>cURL这是另一个非常常见的实现，它通过 PHP获取数据。文件&#x2F;数据被下载并存储在“curled”文件夹下的磁盘中，并附加了一个随机数和“.txt”文件扩展名。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span> <br><span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;url&#x27;</span>]))<br>&#123;<br><span class="hljs-variable">$link</span> = <span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;url&#x27;</span>];<br><span class="hljs-variable">$curlobj</span> = <span class="hljs-title function_ invoke__">curl_init</span>();<br><span class="hljs-title function_ invoke__">curl_setopt</span>(<span class="hljs-variable">$curlobj</span>, CURLOPT_POST, <span class="hljs-number">0</span>);<br><span class="hljs-title function_ invoke__">curl_setopt</span>(<span class="hljs-variable">$curlobj</span>,CURLOPT_URL,<span class="hljs-variable">$link</span>);<br><span class="hljs-title function_ invoke__">curl_setopt</span>(<span class="hljs-variable">$curlobj</span>, CURLOPT_RETURNTRANSFER, <span class="hljs-number">1</span>);<br><span class="hljs-variable">$result</span>=<span class="hljs-title function_ invoke__">curl_exec</span>(<span class="hljs-variable">$curlobj</span>);<br><span class="hljs-title function_ invoke__">curl_close</span>(<span class="hljs-variable">$curlobj</span>);<br> <br><span class="hljs-variable">$filename</span> = <span class="hljs-string">&#x27;./curled/&#x27;</span>.<span class="hljs-title function_ invoke__">rand</span>().<span class="hljs-string">&#x27;.txt&#x27;</span>;<br><span class="hljs-title function_ invoke__">file_put_contents</span>(<span class="hljs-variable">$filename</span>, <span class="hljs-variable">$result</span>); <br><span class="hljs-keyword">echo</span> <span class="hljs-variable">$result</span>;<br>&#125;<br><span class="hljs-meta">?&gt;</span><br><br></code></pre></td></tr></table></figure>
+
+<h2 id="四-SSRF漏洞利用"><a href="#四-SSRF漏洞利用" class="headerlink" title="四 SSRF漏洞利用"></a>四 SSRF漏洞利用</h2><ol>
+<li>利用<code>file</code>协议对本地文件内容进行读取</li>
+<li>利用<code>http</code>协议探测内网存活的<code>IP</code>和<code>端口</code>等</li>
+<li>利用<code>gopher</code>协议构造<code>get、post</code>请求</li>
+<li>利用<code>dict</code>协议泄露安装软件版本信息，查看端口，操作内网<code>redis</code>服务等</li>
 </ol>
+<p>pikachu示例</p>
+<p>点击后跳转</p>
+<p><img src="/2022/11/04/learning%20diary/SSRF/image-20221106162034123.png" srcset="/img/loading.gif" lazyload alt="image-20221106162034123"></p>
+<p>查看源码</p>
+<p><img src="/2022/11/04/learning%20diary/SSRF/image-20221106162045778.png" srcset="/img/loading.gif" lazyload alt="image-20221106162045778"></p>
+<p>用了curl_exec()来执行,并且没做任何过滤</p>
+<p>curl目前支持http、https、ftp、gopher、telnet、dict、file和ldap协议。HTTPS认证、HTTP POST、HTTP PUT、 FTP </p>
+<p>file:&#x2F;&#x2F;&#x2F;本地路径 就能访问本地文件</p>
+<p>第二个示例</p>
+<p><img src="/2022/11/04/learning%20diary/SSRF/image-20221106162538770.png" srcset="/img/loading.gif" lazyload alt="image-20221106162538770"></p>
+<p>get方法参数file,file_get_contents()读取文件</p>
+<p>php:&#x2F;&#x2F;filter&#x2F;read&#x3D;convert.base64-encode&#x2F;resource&#x3D;ssrf.php</p>
+<p><a target="_blank" rel="noopener" href="http://localhost/login.html">http://localhost/login.html</a></p>
+<p>​        </p>
 
                 
               </div>
@@ -353,8 +359,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>CSRF跨站请求伪造</div>
-      <div>http://example.com/2022/11/03/learning diary/CSRF/</div>
+      <div>SSRF</div>
+      <div>http://example.com/2022/11/04/learning diary/SSRF/</div>
     </div>
     <div class="license-meta">
       
@@ -366,7 +372,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>November 3, 2022</div>
+          <div>November 4, 2022</div>
         </div>
       
       
@@ -398,9 +404,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/11/04/learning%20diary/SSRF/" title="SSRF">
+                      <a href="/2022/11/06/learning%20diary/XEE%E6%B3%A8%E5%85%A5/" title="">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">SSRF</span>
+                        <span class="hidden-mobile"></span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -408,8 +414,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/10/31/learning%20diary/XSS%E8%B7%A8%E7%AB%99%E6%94%BB%E5%87%BB/" title="XSS跨站式脚本攻击">
-                        <span class="hidden-mobile">XSS跨站式脚本攻击</span>
+                      <a href="/2022/11/03/learning%20diary/CSRF/" title="CSRF跨站请求伪造">
+                        <span class="hidden-mobile">CSRF跨站请求伪造</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
