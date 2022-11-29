@@ -16,26 +16,29 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="文件上传webshell WebShell , 简称网页后门。简单来说它是运行在Web应用之上的远程控制程序。 webShell其实就是一张网页，由PHP、JSP、ASP、ASP.NET等这类web应用程序语言开发，但webShell并不具备常见网页的功能，例如登录、注册、信息展示等功能，一般会具备文件管理、端口扫描、提权、获取系统信息等功能。 常见的WebShell有哪些？ 大马、小马、各种马…">
+    <meta name="description" content="一  进去如图,无论上传什么类型文件 都返回相同的,  .htaccess 是apache下的配置文件,给某个用户单独配置使用,仅对当前目录下文件及其子目录文件生效 需要httpd.conf中allowoveride开启   png正常上传  php等被过滤  上传.htaccess文件   抓包改下mime    访问&#x2F;upload&#x2F;6eae6740a9c83e3f486e4">
 <meta property="og:type" content="article">
-<meta property="og:title" content="文件上传漏洞">
-<meta property="og:url" content="http://example.com/2022/10/28/learning%20diary/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/index.html">
+<meta property="og:title" content="你传你马呢?">
+<meta property="og:url" content="http://example.com/2022/11/23/Capture%20the%20flag/%E4%BD%A0%E4%BC%A0%E4%BD%A0%E9%A9%AC%E5%91%A2/index.html">
 <meta property="og:site_name" content="Czin2u✈️✈️✈️">
-<meta property="og:description" content="文件上传webshell WebShell , 简称网页后门。简单来说它是运行在Web应用之上的远程控制程序。 webShell其实就是一张网页，由PHP、JSP、ASP、ASP.NET等这类web应用程序语言开发，但webShell并不具备常见网页的功能，例如登录、注册、信息展示等功能，一般会具备文件管理、端口扫描、提权、获取系统信息等功能。 常见的WebShell有哪些？ 大马、小马、各种马…">
+<meta property="og:description" content="一  进去如图,无论上传什么类型文件 都返回相同的,  .htaccess 是apache下的配置文件,给某个用户单独配置使用,仅对当前目录下文件及其子目录文件生效 需要httpd.conf中allowoveride开启   png正常上传  php等被过滤  上传.htaccess文件   抓包改下mime    访问&#x2F;upload&#x2F;6eae6740a9c83e3f486e4">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2022/10/28/learning%20diary/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/image-20221028204131319.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20210518214952407.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDUxOTc4OQ==,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="http://example.com/2022/10/28/learning%20diary/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/image-20221028220558253.png">
-<meta property="og:image" content="http://example.com/2022/10/28/learning%20diary/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/image-20221028210106712.png">
-<meta property="article:published_time" content="2022-10-27T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-11-27T09:05:05.144Z">
+<meta property="og:image" content="http://example.com/2022/11/23/Capture%20the%20flag/%E4%BD%A0%E4%BC%A0%E4%BD%A0%E9%A9%AC%E5%91%A2/image-20221123223126210.png">
+<meta property="og:image" content="http://example.com/2022/11/23/Capture%20the%20flag/%E4%BD%A0%E4%BC%A0%E4%BD%A0%E9%A9%AC%E5%91%A2/image-20221124193618610.png">
+<meta property="og:image" content="http://example.com/2022/11/23/Capture%20the%20flag/%E4%BD%A0%E4%BC%A0%E4%BD%A0%E9%A9%AC%E5%91%A2/image-20221124193642978.png">
+<meta property="og:image" content="http://example.com/2022/11/23/Capture%20the%20flag/%E4%BD%A0%E4%BC%A0%E4%BD%A0%E9%A9%AC%E5%91%A2/image-20221124193815028.png">
+<meta property="og:image" content="http://example.com/2022/11/23/Capture%20the%20flag/%E4%BD%A0%E4%BC%A0%E4%BD%A0%E9%A9%AC%E5%91%A2/image-20221124193933059.png">
+<meta property="og:image" content="http://example.com/2022/11/23/Capture%20the%20flag/%E4%BD%A0%E4%BC%A0%E4%BD%A0%E9%A9%AC%E5%91%A2/image-20221124194007022.png">
+<meta property="og:image" content="http://example.com/2022/11/23/Capture%20the%20flag/%E4%BD%A0%E4%BC%A0%E4%BD%A0%E9%A9%AC%E5%91%A2/image-20221124194226510.png">
+<meta property="article:published_time" content="2022-11-23T14:29:21.967Z">
+<meta property="article:modified_time" content="2022-11-24T11:50:30.691Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2022/10/28/learning%20diary/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/image-20221028204131319.png">
+<meta name="twitter:image" content="http://example.com/2022/11/23/Capture%20the%20flag/%E4%BD%A0%E4%BC%A0%E4%BD%A0%E9%A9%AC%E5%91%A2/image-20221123223126210.png">
   
   
   
-  <title>文件上传漏洞 - Czin2u✈️✈️✈️</title>
+  <title>你传你马呢? - Czin2u✈️✈️✈️</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -227,7 +230,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="文件上传漏洞"></span>
+            <span id="subtitle" data-typed-text="你传你马呢?"></span>
           
         </div>
 
@@ -238,8 +241,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-10-28 00:00" pubdate>
-          October 28, 2022 am
+        <time datetime="2022-11-23 22:29" pubdate>
+          November 23, 2022 pm
         </time>
       </span>
     
@@ -250,7 +253,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.2k words
+          245 words
         
       </span>
     
@@ -261,7 +264,7 @@
         
         
         
-          27 mins
+          3 mins
         
       </span>
     
@@ -299,87 +302,33 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">文件上传漏洞</h1>
+            <h1 style="display: none">你传你马呢?</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h2><h3 id="webshell"><a href="#webshell" class="headerlink" title="webshell"></a>webshell</h3><ul>
-<li>WebShell , 简称网页后门。简单来说它是运行在Web应用之上的远程控制程序。</li>
-<li>webShell其实就是一张网页，由PHP、JSP、ASP、ASP.NET等这类web应用程序语言开发，但webShell并不具备常见网页的功能，例如登录、注册、信息展示等功能，一般会具备文件管理、端口扫描、提权、获取系统信息等功能。</li>
-<li>常见的WebShell有哪些？</li>
-<li>大马、小马、各种马…等</li>
-<li>拥有较完整功能的webshell，我们一般称为大马。</li>
-<li>功能简易的webshell称为小马。</li>
-<li>除此之外还存在一句话木马、菜刀马、脱库马等等的名词，是对于webShell功能或者特性的简称。</li>
-</ul>
-<h2 id="上传漏洞危害"><a href="#上传漏洞危害" class="headerlink" title="上传漏洞危害"></a>上传漏洞危害</h2><ul>
-<li>1.上传文件是web脚本语言，服务器的web容器解释并执行了用户上传的脚本，导致代码执行。</li>
-<li>2.上传文件是病毒或者<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E6%9C%A8%E9%A9%AC&spm=1001.2101.3001.7020">木马</a>时，主要用于诱骗用户或者管理员下载执行或者直接 自劢运行；</li>
-<li>3.上传文件是Flash的策略文件 crossdomain.xml，黑客用以控制Flash在该域 下的行为(其他通过类似方式控制策略文件的情况类似);</li>
-<li>4.上传文件是病毒、木马文件，黑客用以诱骗用户或者管理员下载执行；</li>
-<li>5.上传文件是钓鱼图片或为包含了脚本的图片，在某些版本的浏览器中会被作为脚本执行，被用于钓鱼和欺诈。 除此之外，还有一些不常见的利用方法，比如将上传文件作为一个入口，溢 出服务器的后台处理程序，如图片解析模块;或者上传一个合法的文本文件，其内容包含了PHP脚本，再通过”本地文件包含漏洞(Local File Include)”执行此脚本。</li>
-</ul>
-<h2 id="上传漏洞产生的原因"><a href="#上传漏洞产生的原因" class="headerlink" title="上传漏洞产生的原因"></a>上传漏洞产生的原因</h2><p>一些web应用程序中允许上传图片，文本或者其他资源到指定的位置，文件上传漏洞就是利用这些可以上传的地方将恶意代码植入到服务器中，再通过 url 去 访问以执行代码.</p>
-<p>造成文件上传漏洞的原因是:</p>
-<ul>
-<li>1.服务器配置不当</li>
-<li>2.开源编辑器上传漏洞</li>
-<li>3.本地文件上传限制被绕过</li>
-<li>4.过滤不严格被绕过</li>
-<li>5.文件解析漏洞导致文件执行</li>
-<li>6.文件路径截断</li>
-</ul>
-<h2 id="文件上传漏洞绕过"><a href="#文件上传漏洞绕过" class="headerlink" title="文件上传漏洞绕过"></a>文件上传漏洞绕过</h2><h3 id="客户端js验证"><a href="#客户端js验证" class="headerlink" title="客户端js验证"></a>客户端js验证</h3><ol>
-<li>利用插件禁用js</li>
-<li>brupsuite数据拦截</li>
-</ol>
-<h3 id="服务端绕过验证"><a href="#服务端绕过验证" class="headerlink" title="服务端绕过验证"></a>服务端绕过验证</h3><ol>
-<li><p>MIME类型验证</p>
-<p>MIME类型是描述消息<code>内容类型的因特网标准。</code> </p>
-<p><img src="/2022/10/28/learning%20diary/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/image-20221028204131319.png" srcset="/img/loading.gif" lazyload alt="image-20221028204131319"></p>
-<p>请求头content-type字段中</p>
-<p>利用burp抓包</p>
-<p>把content-type字段修改为允许的类型即可 </p>
+                <h3 id="一"><a href="#一" class="headerlink" title="一"></a>一</h3><ol>
+<li><p><img src="/2022/11/23/Capture%20the%20flag/%E4%BD%A0%E4%BC%A0%E4%BD%A0%E9%A9%AC%E5%91%A2/image-20221123223126210.png" srcset="/img/loading.gif" lazyload alt="image-20221123223126210"></p>
+<p>进去如图,无论上传什么类型文件 都返回相同的,</p>
 </li>
-<li><p>文件头内容验证</p>
-<p>图片格式往往不是根据文件后缀名去做判断的。文件头是文件开头的一段二进制，不同的图片类型，文件头是不同的。文件头又称文件幻数。<br>常见文件幻数<br>JPG: FF D8 FF EO 00 10 4A 46 49 46.<br>GIF:47 49 46 3839 61(GIF89a).<br>PNG:89 50 4E 47</p>
-<p>(1) 伪造文件头绕过方法</p>
-<p>(2) 利用服务器将木马文件解析成了图片文件，因此向其发送执行该文件的请求时，服务器只会返回这个“图片”文件，并不会执行相应命令。</p>
-<p>利用 文件包含漏洞 可以将图片格式的文件当做php文件来解析执行:<a target="_blank" rel="noopener" href="http://127.0.0.1/pikachu/vul/fileinclude/fi_local.php?filename=../../unsafeupload/uploads/2021/03/20/9439796055e7a8d1a39396276569.jpg&amp;submit=%E6%8F%90%E4%BA%A4%E6%9F%A5%E8%AF%A2">http://127.0.0.1/pikachu/vul/fileinclude/fi_local.php?filename=../../unsafeupload/uploads/2021/03/20/9439796055e7a8d1a39396276569.jpg&amp;submit=提交查询</a></p>
-<p>模板：<a target="_blank" rel="noopener" href="http://127.0.0.1/pikachu/vul/fileinclude/fi_local.php?filename=../../unsafeupload/%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E7%9A%84%E5%9B%9E%E6%98%BE%E8%B7%AF%E5%BE%84&amp;submit=%E6%8F%90%E4%BA%A4%E6%9F%A5%E8%AF%A2">http://127.0.0.1/pikachu/vul/fileinclude/fi_local.php?filename=../../unsafeupload/上传文件的回显路径&amp;submit=提交查询</a></p>
-<p>copy 一张图片.png&#x2F;b+一句话木马.php&#x2F;a 生成图片名称.png </p>
+<li><p>.htaccess 是apache下的配置文件,给某个用户单独配置使用,仅对当前目录下文件及其子目录文件生效</p>
+<p>需要httpd.conf中allowoveride开启</p>
 </li>
-<li><p>后缀名大小写绕过(黑名单)</p>
-<p><strong>后缀名大小写绕过原理：</strong><code>服务端没有将后缀名转换为统一格式进行比对</code>，导致可以上传后缀为pHp的文件，又因为<code>Windows操作系统大小写不敏感</code>，所以.pHp扔回被当成PHP文件解析。</p>
+<li><p><img src="/2022/11/23/Capture%20the%20flag/%E4%BD%A0%E4%BC%A0%E4%BD%A0%E9%A9%AC%E5%91%A2/image-20221124193618610.png" srcset="/img/loading.gif" lazyload alt="image-20221124193618610"></p>
+<p>png正常上传</p>
+<p><img src="/2022/11/23/Capture%20the%20flag/%E4%BD%A0%E4%BC%A0%E4%BD%A0%E9%A9%AC%E5%91%A2/image-20221124193642978.png" srcset="/img/loading.gif" lazyload alt="image-20221124193642978"></p>
+<p>php等被过滤</p>
 </li>
-<li><p>修改后缀名绕过(黑名单)</p>
-<p>用黑名单不允许上传.asp,.aspx,.php,.jsp后缀的文件<br>但可以上传.phtml .phps .php5 .pht<br>前提是apache的httpd.conf中有如下配置代码<br>AddType application&#x2F;x-httpd-php .php .phtml .phps .php5 .pht</p>
+<li><p>上传.htaccess文件</p>
+<p><img src="/2022/11/23/Capture%20the%20flag/%E4%BD%A0%E4%BC%A0%E4%BD%A0%E9%A9%AC%E5%91%A2/image-20221124193815028.png" srcset="/img/loading.gif" lazyload alt="image-20221124193815028"></p>
+<p><img src="/2022/11/23/Capture%20the%20flag/%E4%BD%A0%E4%BC%A0%E4%BD%A0%E9%A9%AC%E5%91%A2/image-20221124193933059.png" srcset="/img/loading.gif" lazyload alt="image-20221124193933059"></p>
+<p>抓包改下mime</p>
+<p><img src="/2022/11/23/Capture%20the%20flag/%E4%BD%A0%E4%BC%A0%E4%BD%A0%E9%A9%AC%E5%91%A2/image-20221124194007022.png" srcset="/img/loading.gif" lazyload alt="image-20221124194007022"></p>
 </li>
-<li><p>重写绕过</p>
-<p>服务端将<code>黑名单的后缀名替换为空，但仅进行一次</code>。上传.phphpp后缀，替换php一次为空</p>
+<li><p><img src="/2022/11/23/Capture%20the%20flag/%E4%BD%A0%E4%BC%A0%E4%BD%A0%E9%A9%AC%E5%91%A2/image-20221124194226510.png" srcset="/img/loading.gif" lazyload alt="image-20221124194226510"></p>
+<p>访问&#x2F;upload&#x2F;6eae6740a9c83e3f486e4a574944bc44&#x2F;1.png</p>
+<p>得到flag{b33457b2-5517-44d1-a131-79d52bbb76ba}</p>
 </li>
-<li><p>特殊可解析后缀绕过</p>
-</li>
-<li><p><code>黑名单规则不严谨</code>，在某些特定环境中某些特殊后缀名仍会被当做PHP文件解析。phplphp2&#x2F;php3&#x2F;php4lphp5&#x2F;php6lphp7&#x2F;phtlphtm&#x2F;phtml</p>
-</li>
-<li><p>利用<code>window对于文件和文件名的限制</code>，以下字符放在结尾时，不符合操作系统的命名规范,在最后生成文件时，<code>字符会被自动去除</code>。<img src="https://img-blog.csdnimg.cn/20210518214952407.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDUxOTc4OQ==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
-</li>
-<li><p>%00是chr(O)，它不是空格，是NULL，空字符。<br>当程序在输出含有chr(O)变量时，chr(O)后面的数据会被停止，换句话说，就是误把它当做结束符，后面的数据直接忽略，这就导致漏洞产生的原因。<br>在文件上传中，利用%00截断，在文件扩展名验证时，是取文件的扩展名来做验证，但是最后文件保存在本地时，%00会截断文件名，只保存%00之前的内容。<br>前提条件： PHP版本 &lt; 5.34 、php的magic_quotes_gpc为OFF状态</p>
-</li>
-<li><p>.htaccess</p>
-</li>
-</ol>
-<p>   在apache里，这个文件作为一个配置文件，可以用来控制所在目录的访问权限以及解析设置。即是，可以通过设置可以将该目录下的所有文件作为php文件来解析<br>   .htaccess可以写入apache配置信息，改变当前目录以及子目录的Apache配置信息。<br>   前提条件： 配置上允许.htaccess生效<br>   Apache开启rewrite模块<br>   .apache配置文件为AllowOverride All(默认为None)</p>
-<p>   <img src="/2022/10/28/learning%20diary/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/image-20221028220558253.png" srcset="/img/loading.gif" lazyload alt="image-20221028220558253"></p>
-<p>   方法一： 所有jpg后祭都会背当做PHP解析<br>    - AddType application&#x2F;x-httpd-php.jpg</p>
-<p>   方法二： 带有jpg关键字会被当岗PHP解析<br>   &lt;FilesMatch “sec.jpg”&gt;<br>   SetHandler application&#x2F;x-httpd-php<br>   </p>
-<h3 id="服务器解析漏洞"><a href="#服务器解析漏洞" class="headerlink" title="服务器解析漏洞"></a>服务器解析漏洞</h3><p>解析漏洞,是指中间件(Apache、nginx、iis等)在解析文件时出现了漏洞,从而,黑客可以利用该漏洞实现非法文件的解析。</p>
-<p><img src="/2022/10/28/learning%20diary/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/image-20221028210106712.png" srcset="/img/loading.gif" lazyload alt="image-20221028210106712"></p>
-<p>3.5.1 Apache 解析漏洞<br>     Apache解析文件规则是从右到左。例如shel.php.gix.ccc，apache会先识别ccc，ccc不被识别，则识别gix，以此类推，最后会被识别为php来运行。<br>Apache 解析漏洞<br>3.5.2 IIS6.0 漏洞<br>    目录解析 :<br>目录名为.asp、.asa、.cer，则目录下的所有文件都会被作为ASP<br>url&#x2F;test.asp&#x2F;shell.jpg会被当作asp脚本运行。<br>文件解析 ：<br>文件名中分号后不被解析，例如.asp;、.asa;、.cer;。<br>url&#x2F;test.asp;shell.jpg会被当作asp脚本运行。<br>文件类型解析 ：<br>.asa，.cer，.cdx都会被作为asp文件执行。<br>url&#x2F;shell.asa会被作为asp文件执行。<br>IIS 6.0 解析漏洞<br>3.5.3 Nginx 漏洞<br>      PHP+nginx默认是以cgi的方式去运行，当用户配置不当，会导致任意文件被当作php去解析。<br>利用条件:<br>以FastCGl运行<br>cgi.fix_pathinfo&#x3D;1(全版本PHP默认为开启)<br>例如如果满足上述条件，当你访问url&#x2F;shell.jpg&#x2F;shell.php时，shell.jpg会被当作php去执行。<br>Nginx 解析漏洞</p>
-<h3 id="常见绕过"><a href="#常见绕过" class="headerlink" title="常见绕过"></a>常见绕过</h3><ol>
-<li><?   :<script language="php">@eval_r($_POST[sb])</li>
-<li>.uesr.ini 配置文件</li>
 </ol>
 
                 
@@ -398,8 +347,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>文件上传漏洞</div>
-      <div>http://example.com/2022/10/28/learning diary/文件上传漏洞/</div>
+      <div>你传你马呢?</div>
+      <div>http://example.com/2022/11/23/Capture the flag/你传你马呢/</div>
     </div>
     <div class="license-meta">
       
@@ -411,7 +360,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>October 28, 2022</div>
+          <div>November 23, 2022</div>
         </div>
       
       
@@ -443,9 +392,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/10/29/learning%20diary/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/" title="文件包含漏洞">
+                      <a href="/2022/11/25/learning%20diary/%E5%8F%8D%E5%BC%B9shell/" title="反弹shell">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">文件包含漏洞</span>
+                        <span class="hidden-mobile">反弹shell</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -453,8 +402,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/10/23/learning%20diary/sqli%20less%E9%97%AF%E5%85%B3%E6%97%A5%E8%AE%B0/" title="sqli less">
-                        <span class="hidden-mobile">sqli less</span>
+                      <a href="/2022/11/20/Capture%20the%20flag/MD5/" title="easymd5">
+                        <span class="hidden-mobile">easymd5</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

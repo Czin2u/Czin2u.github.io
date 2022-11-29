@@ -16,26 +16,33 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="文件上传webshell WebShell , 简称网页后门。简单来说它是运行在Web应用之上的远程控制程序。 webShell其实就是一张网页，由PHP、JSP、ASP、ASP.NET等这类web应用程序语言开发，但webShell并不具备常见网页的功能，例如登录、注册、信息展示等功能，一般会具备文件管理、端口扫描、提权、获取系统信息等功能。 常见的WebShell有哪些？ 大马、小马、各种马…">
+    <meta name="description" content="第一章 计算机系统概述1.1 操作系统基本概念1.1.1 操作系统概念 功能 操作系统层次  介于硬件与应用软件之间  操作系统的功能和目标  计算机资源系统资源的管理者 管理软硬件资源、合理的组织、调度计算机的工作与资源的分配 处理器管理 (进程管理): 进程控制、进程同步、进程通信、死锁处理、处理机调度 存储器管理:内存分配与回收、地址映射、内存保护与共享和内存扩充 文件管理: 设备管理:">
 <meta property="og:type" content="article">
-<meta property="og:title" content="文件上传漏洞">
-<meta property="og:url" content="http://example.com/2022/10/28/learning%20diary/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/index.html">
+<meta property="og:title" content="System Operation">
+<meta property="og:url" content="http://example.com/2022/11/17/Capture%20the%20flag/system%20operation/index.html">
 <meta property="og:site_name" content="Czin2u✈️✈️✈️">
-<meta property="og:description" content="文件上传webshell WebShell , 简称网页后门。简单来说它是运行在Web应用之上的远程控制程序。 webShell其实就是一张网页，由PHP、JSP、ASP、ASP.NET等这类web应用程序语言开发，但webShell并不具备常见网页的功能，例如登录、注册、信息展示等功能，一般会具备文件管理、端口扫描、提权、获取系统信息等功能。 常见的WebShell有哪些？ 大马、小马、各种马…">
+<meta property="og:description" content="第一章 计算机系统概述1.1 操作系统基本概念1.1.1 操作系统概念 功能 操作系统层次  介于硬件与应用软件之间  操作系统的功能和目标  计算机资源系统资源的管理者 管理软硬件资源、合理的组织、调度计算机的工作与资源的分配 处理器管理 (进程管理): 进程控制、进程同步、进程通信、死锁处理、处理机调度 存储器管理:内存分配与回收、地址映射、内存保护与共享和内存扩充 文件管理: 设备管理:">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2022/10/28/learning%20diary/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/image-20221028204131319.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20210518214952407.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDUxOTc4OQ==,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="http://example.com/2022/10/28/learning%20diary/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/image-20221028220558253.png">
-<meta property="og:image" content="http://example.com/2022/10/28/learning%20diary/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/image-20221028210106712.png">
-<meta property="article:published_time" content="2022-10-27T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-11-27T09:05:05.144Z">
+<meta property="og:image" content="http://example.com/2022/11/17/Capture%20the%20flag/system%20operation/image-20221117172139353.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200222160313682.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxNDYwNA==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2020022223135066.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxNDYwNA==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200222231536872.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxNDYwNA==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200223165736223.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxNDYwNA==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200223182336630.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxNDYwNA==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200223182805329.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxNDYwNA==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="http://example.com/2022/11/17/Capture%20the%20flag/system%20operation/image-20221119202450544.png">
+<meta property="og:image" content="http://example.com/2022/11/17/Capture%20the%20flag/system%20operation/image-20221119202934298.png">
+<meta property="og:image" content="http://example.com/2022/11/17/Capture%20the%20flag/system%20operation/image-20221119213801551.png">
+<meta property="og:image" content="http://example.com/2022/11/17/Capture%20the%20flag/system%20operation/image-20221122222454269.png">
+<meta property="article:published_time" content="2022-11-17T08:44:01.682Z">
+<meta property="article:modified_time" content="2022-11-23T12:19:26.374Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2022/10/28/learning%20diary/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/image-20221028204131319.png">
+<meta name="twitter:image" content="http://example.com/2022/11/17/Capture%20the%20flag/system%20operation/image-20221117172139353.png">
   
   
   
-  <title>文件上传漏洞 - Czin2u✈️✈️✈️</title>
+  <title>System Operation - Czin2u✈️✈️✈️</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -227,7 +234,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="文件上传漏洞"></span>
+            <span id="subtitle" data-typed-text="System Operation"></span>
           
         </div>
 
@@ -238,8 +245,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-10-28 00:00" pubdate>
-          October 28, 2022 am
+        <time datetime="2022-11-17 16:44" pubdate>
+          November 17, 2022 pm
         </time>
       </span>
     
@@ -250,7 +257,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.2k words
+          1.2k words
         
       </span>
     
@@ -261,7 +268,7 @@
         
         
         
-          27 mins
+          11 mins
         
       </span>
     
@@ -299,88 +306,151 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">文件上传漏洞</h1>
+            <h1 style="display: none">System Operation</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h2><h3 id="webshell"><a href="#webshell" class="headerlink" title="webshell"></a>webshell</h3><ul>
-<li>WebShell , 简称网页后门。简单来说它是运行在Web应用之上的远程控制程序。</li>
-<li>webShell其实就是一张网页，由PHP、JSP、ASP、ASP.NET等这类web应用程序语言开发，但webShell并不具备常见网页的功能，例如登录、注册、信息展示等功能，一般会具备文件管理、端口扫描、提权、获取系统信息等功能。</li>
-<li>常见的WebShell有哪些？</li>
-<li>大马、小马、各种马…等</li>
-<li>拥有较完整功能的webshell，我们一般称为大马。</li>
-<li>功能简易的webshell称为小马。</li>
-<li>除此之外还存在一句话木马、菜刀马、脱库马等等的名词，是对于webShell功能或者特性的简称。</li>
-</ul>
-<h2 id="上传漏洞危害"><a href="#上传漏洞危害" class="headerlink" title="上传漏洞危害"></a>上传漏洞危害</h2><ul>
-<li>1.上传文件是web脚本语言，服务器的web容器解释并执行了用户上传的脚本，导致代码执行。</li>
-<li>2.上传文件是病毒或者<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E6%9C%A8%E9%A9%AC&spm=1001.2101.3001.7020">木马</a>时，主要用于诱骗用户或者管理员下载执行或者直接 自劢运行；</li>
-<li>3.上传文件是Flash的策略文件 crossdomain.xml，黑客用以控制Flash在该域 下的行为(其他通过类似方式控制策略文件的情况类似);</li>
-<li>4.上传文件是病毒、木马文件，黑客用以诱骗用户或者管理员下载执行；</li>
-<li>5.上传文件是钓鱼图片或为包含了脚本的图片，在某些版本的浏览器中会被作为脚本执行，被用于钓鱼和欺诈。 除此之外，还有一些不常见的利用方法，比如将上传文件作为一个入口，溢 出服务器的后台处理程序，如图片解析模块;或者上传一个合法的文本文件，其内容包含了PHP脚本，再通过”本地文件包含漏洞(Local File Include)”执行此脚本。</li>
-</ul>
-<h2 id="上传漏洞产生的原因"><a href="#上传漏洞产生的原因" class="headerlink" title="上传漏洞产生的原因"></a>上传漏洞产生的原因</h2><p>一些web应用程序中允许上传图片，文本或者其他资源到指定的位置，文件上传漏洞就是利用这些可以上传的地方将恶意代码植入到服务器中，再通过 url 去 访问以执行代码.</p>
-<p>造成文件上传漏洞的原因是:</p>
+                <h2 id="第一章-计算机系统概述"><a href="#第一章-计算机系统概述" class="headerlink" title="第一章 计算机系统概述"></a>第一章 计算机系统概述</h2><h3 id="1-1-操作系统基本概念"><a href="#1-1-操作系统基本概念" class="headerlink" title="1.1 操作系统基本概念"></a>1.1 操作系统基本概念</h3><h4 id="1-1-1-操作系统概念-功能"><a href="#1-1-1-操作系统概念-功能" class="headerlink" title="1.1.1 操作系统概念 功能"></a>1.1.1 操作系统概念 功能</h4><ol>
+<li><p>操作系统层次</p>
+<p><img src="/2022/11/17/Capture%20the%20flag/system%20operation/image-20221117172139353.png" srcset="/img/loading.gif" lazyload alt="image-20221117172139353"></p>
+<p>介于硬件与应用软件之间</p>
+</li>
+<li><p>操作系统的功能和目标</p>
+<ol>
+<li><p>计算机资源系统资源的管理者</p>
+<p>管理软硬件资源、合理的组织、调度计算机的工作与资源的分配</p>
+<p>处理器管理 (进程管理): 进程控制、进程同步、进程通信、死锁处理、处理机调度</p>
+<p>存储器管理:内存分配与回收、地址映射、内存保护与共享和内存扩充</p>
+<p>文件管理:</p>
+<p>设备管理:</p>
+</li>
+<li><p>用户和硬件系统之间的接口</p>
+<p>命令接口: cmd 用户直接使用</p>
+<p>程序接口: 用户通过程序间接调用系统接口 user32.dll</p>
+</li>
+<li><p>扩充机器,虚拟机</p>
+</li>
+<li><p>os实现了对计算机资源的抽象</p>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="1-1-2-操作系统特征"><a href="#1-1-2-操作系统特征" class="headerlink" title="1.1.2 操作系统特征"></a>1.1.2 操作系统特征</h4><ol>
+<li><p>并发</p>
+<p>同一时间间隔内发生,并行:在同一时刻发生</p>
+</li>
+<li><p>共享</p>
+<p>互斥共享:单个进程独占</p>
+<p>同时共享:</p>
+</li>
+<li><p>虚拟</p>
 <ul>
-<li>1.服务器配置不当</li>
-<li>2.开源编辑器上传漏洞</li>
-<li>3.本地文件上传限制被绕过</li>
-<li>4.过滤不严格被绕过</li>
-<li>5.文件解析漏洞导致文件执行</li>
-<li>6.文件路径截断</li>
+<li>时分复用技术：如处理器的分时共享</li>
+<li>空间复用技术：如虚拟存储器</li>
 </ul>
-<h2 id="文件上传漏洞绕过"><a href="#文件上传漏洞绕过" class="headerlink" title="文件上传漏洞绕过"></a>文件上传漏洞绕过</h2><h3 id="客户端js验证"><a href="#客户端js验证" class="headerlink" title="客户端js验证"></a>客户端js验证</h3><ol>
-<li>利用插件禁用js</li>
-<li>brupsuite数据拦截</li>
-</ol>
-<h3 id="服务端绕过验证"><a href="#服务端绕过验证" class="headerlink" title="服务端绕过验证"></a>服务端绕过验证</h3><ol>
-<li><p>MIME类型验证</p>
-<p>MIME类型是描述消息<code>内容类型的因特网标准。</code> </p>
-<p><img src="/2022/10/28/learning%20diary/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/image-20221028204131319.png" srcset="/img/loading.gif" lazyload alt="image-20221028204131319"></p>
-<p>请求头content-type字段中</p>
-<p>利用burp抓包</p>
-<p>把content-type字段修改为允许的类型即可 </p>
 </li>
-<li><p>文件头内容验证</p>
-<p>图片格式往往不是根据文件后缀名去做判断的。文件头是文件开头的一段二进制，不同的图片类型，文件头是不同的。文件头又称文件幻数。<br>常见文件幻数<br>JPG: FF D8 FF EO 00 10 4A 46 49 46.<br>GIF:47 49 46 3839 61(GIF89a).<br>PNG:89 50 4E 47</p>
-<p>(1) 伪造文件头绕过方法</p>
-<p>(2) 利用服务器将木马文件解析成了图片文件，因此向其发送执行该文件的请求时，服务器只会返回这个“图片”文件，并不会执行相应命令。</p>
-<p>利用 文件包含漏洞 可以将图片格式的文件当做php文件来解析执行:<a target="_blank" rel="noopener" href="http://127.0.0.1/pikachu/vul/fileinclude/fi_local.php?filename=../../unsafeupload/uploads/2021/03/20/9439796055e7a8d1a39396276569.jpg&amp;submit=%E6%8F%90%E4%BA%A4%E6%9F%A5%E8%AF%A2">http://127.0.0.1/pikachu/vul/fileinclude/fi_local.php?filename=../../unsafeupload/uploads/2021/03/20/9439796055e7a8d1a39396276569.jpg&amp;submit=提交查询</a></p>
-<p>模板：<a target="_blank" rel="noopener" href="http://127.0.0.1/pikachu/vul/fileinclude/fi_local.php?filename=../../unsafeupload/%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E7%9A%84%E5%9B%9E%E6%98%BE%E8%B7%AF%E5%BE%84&amp;submit=%E6%8F%90%E4%BA%A4%E6%9F%A5%E8%AF%A2">http://127.0.0.1/pikachu/vul/fileinclude/fi_local.php?filename=../../unsafeupload/上传文件的回显路径&amp;submit=提交查询</a></p>
-<p>copy 一张图片.png&#x2F;b+一句话木马.php&#x2F;a 生成图片名称.png </p>
-</li>
-<li><p>后缀名大小写绕过(黑名单)</p>
-<p><strong>后缀名大小写绕过原理：</strong><code>服务端没有将后缀名转换为统一格式进行比对</code>，导致可以上传后缀为pHp的文件，又因为<code>Windows操作系统大小写不敏感</code>，所以.pHp扔回被当成PHP文件解析。</p>
-</li>
-<li><p>修改后缀名绕过(黑名单)</p>
-<p>用黑名单不允许上传.asp,.aspx,.php,.jsp后缀的文件<br>但可以上传.phtml .phps .php5 .pht<br>前提是apache的httpd.conf中有如下配置代码<br>AddType application&#x2F;x-httpd-php .php .phtml .phps .php5 .pht</p>
-</li>
-<li><p>重写绕过</p>
-<p>服务端将<code>黑名单的后缀名替换为空，但仅进行一次</code>。上传.phphpp后缀，替换php一次为空</p>
-</li>
-<li><p>特殊可解析后缀绕过</p>
-</li>
-<li><p><code>黑名单规则不严谨</code>，在某些特定环境中某些特殊后缀名仍会被当做PHP文件解析。phplphp2&#x2F;php3&#x2F;php4lphp5&#x2F;php6lphp7&#x2F;phtlphtm&#x2F;phtml</p>
-</li>
-<li><p>利用<code>window对于文件和文件名的限制</code>，以下字符放在结尾时，不符合操作系统的命名规范,在最后生成文件时，<code>字符会被自动去除</code>。<img src="https://img-blog.csdnimg.cn/20210518214952407.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDUxOTc4OQ==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
-</li>
-<li><p>%00是chr(O)，它不是空格，是NULL，空字符。<br>当程序在输出含有chr(O)变量时，chr(O)后面的数据会被停止，换句话说，就是误把它当做结束符，后面的数据直接忽略，这就导致漏洞产生的原因。<br>在文件上传中，利用%00截断，在文件扩展名验证时，是取文件的扩展名来做验证，但是最后文件保存在本地时，%00会截断文件名，只保存%00之前的内容。<br>前提条件： PHP版本 &lt; 5.34 、php的magic_quotes_gpc为OFF状态</p>
-</li>
-<li><p>.htaccess</p>
+<li><p>异步</p>
+<p>多道程序环境允许多个程序<code>并发</code>执行，但由于资源有限，如cpu只有一个，进程的执行并不是一贯到底的，而是走走停停的，它以不可预知的速度向前推进。</p>
 </li>
 </ol>
-<p>   在apache里，这个文件作为一个配置文件，可以用来控制所在目录的访问权限以及解析设置。即是，可以通过设置可以将该目录下的所有文件作为php文件来解析<br>   .htaccess可以写入apache配置信息，改变当前目录以及子目录的Apache配置信息。<br>   前提条件： 配置上允许.htaccess生效<br>   Apache开启rewrite模块<br>   .apache配置文件为AllowOverride All(默认为None)</p>
-<p>   <img src="/2022/10/28/learning%20diary/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/image-20221028220558253.png" srcset="/img/loading.gif" lazyload alt="image-20221028220558253"></p>
-<p>   方法一： 所有jpg后祭都会背当做PHP解析<br>    - AddType application&#x2F;x-httpd-php.jpg</p>
-<p>   方法二： 带有jpg关键字会被当岗PHP解析<br>   &lt;FilesMatch “sec.jpg”&gt;<br>   SetHandler application&#x2F;x-httpd-php<br>   </p>
-<h3 id="服务器解析漏洞"><a href="#服务器解析漏洞" class="headerlink" title="服务器解析漏洞"></a>服务器解析漏洞</h3><p>解析漏洞,是指中间件(Apache、nginx、iis等)在解析文件时出现了漏洞,从而,黑客可以利用该漏洞实现非法文件的解析。</p>
-<p><img src="/2022/10/28/learning%20diary/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/image-20221028210106712.png" srcset="/img/loading.gif" lazyload alt="image-20221028210106712"></p>
-<p>3.5.1 Apache 解析漏洞<br>     Apache解析文件规则是从右到左。例如shel.php.gix.ccc，apache会先识别ccc，ccc不被识别，则识别gix，以此类推，最后会被识别为php来运行。<br>Apache 解析漏洞<br>3.5.2 IIS6.0 漏洞<br>    目录解析 :<br>目录名为.asp、.asa、.cer，则目录下的所有文件都会被作为ASP<br>url&#x2F;test.asp&#x2F;shell.jpg会被当作asp脚本运行。<br>文件解析 ：<br>文件名中分号后不被解析，例如.asp;、.asa;、.cer;。<br>url&#x2F;test.asp;shell.jpg会被当作asp脚本运行。<br>文件类型解析 ：<br>.asa，.cer，.cdx都会被作为asp文件执行。<br>url&#x2F;shell.asa会被作为asp文件执行。<br>IIS 6.0 解析漏洞<br>3.5.3 Nginx 漏洞<br>      PHP+nginx默认是以cgi的方式去运行，当用户配置不当，会导致任意文件被当作php去解析。<br>利用条件:<br>以FastCGl运行<br>cgi.fix_pathinfo&#x3D;1(全版本PHP默认为开启)<br>例如如果满足上述条件，当你访问url&#x2F;shell.jpg&#x2F;shell.php时，shell.jpg会被当作php去执行。<br>Nginx 解析漏洞</p>
-<h3 id="常见绕过"><a href="#常见绕过" class="headerlink" title="常见绕过"></a>常见绕过</h3><ol>
-<li><?   :<script language="php">@eval_r($_POST[sb])</li>
-<li>.uesr.ini 配置文件</li>
+<h3 id="1-2-操作系统的分类"><a href="#1-2-操作系统的分类" class="headerlink" title="1.2 操作系统的分类"></a>1.2 操作系统的分类</h3><h4 id="1-2-1-操作系统的分类"><a href="#1-2-1-操作系统的分类" class="headerlink" title="1.2.1 操作系统的分类"></a>1.2.1 操作系统的分类</h4><ol>
+<li><img src="https://img-blog.csdnimg.cn/20200222160313682.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxNDYwNA==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="img" style="zoom: 25%;">
+
+多道批处理:开始出现操作系统</li>
 </ol>
+<h3 id="1-3-操作系统的运行机制和体系"><a href="#1-3-操作系统的运行机制和体系" class="headerlink" title="1.3 操作系统的运行机制和体系"></a>1.3 操作系统的运行机制和体系</h3><h4 id="1-3-1-运行机制和体系结构"><a href="#1-3-1-运行机制和体系结构" class="headerlink" title="1.3.1 运行机制和体系结构"></a>1.3.1 运行机制和体系结构</h4><ol>
+<li><p>体系结构<img src="https://img-blog.csdnimg.cn/2020022223135066.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxNDYwNA==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+</li>
+<li><p>层次结构<img src="https://img-blog.csdnimg.cn/20200222231536872.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxNDYwNA==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+</li>
+<li><p>用户态 核心态的切换</p>
+<p>通过唯一途径中断实现 执行一个特权指令 将程序状态字psw标志改变 0为用户 1为核心</p>
+</li>
+</ol>
+<h4 id="1-3-2-中断和异常"><a href="#1-3-2-中断和异常" class="headerlink" title="1.3.2 中断和异常"></a>1.3.2 中断和异常</h4><ol>
+<li><img src="https://img-blog.csdnimg.cn/20200223165736223.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxNDYwNA==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="img"></li>
+</ol>
+<h4 id="1-3-3-系统调用"><a href="#1-3-3-系统调用" class="headerlink" title="1.3.3 系统调用"></a>1.3.3 系统调用</h4><ol>
+<li><p>系统调用与库函数调用</p>
+<p><img src="https://img-blog.csdnimg.cn/20200223182336630.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxNDYwNA==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+</li>
+<li><p>系统调用执行过程</p>
+<p><img src="https://img-blog.csdnimg.cn/20200223182805329.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxNDYwNA==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+</li>
+</ol>
+<h2 id="第二章-进程管理"><a href="#第二章-进程管理" class="headerlink" title="第二章 进程管理"></a>第二章 进程管理</h2><h3 id="2-1-进程与线程"><a href="#2-1-进程与线程" class="headerlink" title="2.1 进程与线程"></a>2.1 进程与线程</h3><h4 id="2-1-1-进程的定义-特征-组成"><a href="#2-1-1-进程的定义-特征-组成" class="headerlink" title="2.1.1 进程的定义 特征 组成"></a>2.1.1 进程的定义 特征 组成</h4><ol>
+<li><p>进程的定义</p>
+<p><img src="/2022/11/17/Capture%20the%20flag/system%20operation/image-20221119202450544.png" srcset="/img/loading.gif" lazyload alt="image-20221119202450544"></p>
+</li>
+<li><p>特征</p>
+</li>
+</ol>
+<h4 id="2-1-2-基本状态及转换"><a href="#2-1-2-基本状态及转换" class="headerlink" title="2.1.2 基本状态及转换"></a>2.1.2 基本状态及转换</h4><ol>
+<li><p>就绪 执行 阻塞 </p>
+<p><img src="/2022/11/17/Capture%20the%20flag/system%20operation/image-20221119202934298.png" srcset="/img/loading.gif" lazyload alt="image-20221119202934298"></p>
+</li>
+<li><p>创建状态和中止状态</p>
+</li>
+</ol>
+<h4 id="2-1-3-进程通信"><a href="#2-1-3-进程通信" class="headerlink" title="2.1.3 进程通信"></a>2.1.3 进程通信</h4><ol>
+<li>进程通信: 多个进程之间不能之间访问另一个进程的数据,但信息交换是必要的,os提供一些通信方法</li>
+<li>共享存储: 共享一块大家都可以访问的空间，一次只能有一个进程进行读或写操作</li>
+<li>管道通信: 半双工通道,互斥访问,读写阻塞</li>
+<li>消息传递: 发送信息的进程将消息头写好，接受信息进程根据消息头读取信息或寻找信封是哪一个</li>
+</ol>
+<h4 id="2-1-4-线程与多线程"><a href="#2-1-4-线程与多线程" class="headerlink" title="2.1.4 线程与多线程"></a>2.1.4 线程与多线程</h4><ol>
+<li><p>引入线程增加并发度,线程是程序执行流的最小单位</p>
+</li>
+<li><p>线程的属性 </p>
+<p><img src="/2022/11/17/Capture%20the%20flag/system%20operation/image-20221119213801551.png" srcset="/img/loading.gif" lazyload alt="image-20221119213801551"></p>
+</li>
+<li><p>线程实现方式</p>
+<p>用户级线程: 由应用程序通过线程库实现,用户不透明,对操作系统透明</p>
+<p>内核级线程: 由操作系统内核实现,是处理机分配的单位</p>
+</li>
+<li><p>多线程模型</p>
+<p>多对一: 多个用户线程对一个内核线程 </p>
+<p>一对一: </p>
+<p>多对多: n-&gt;m n&gt;&#x3D;m</p>
+</li>
+</ol>
+<h3 id="2-3-进程同步"><a href="#2-3-进程同步" class="headerlink" title="2.3 进程同步"></a>2.3 进程同步</h3><h4 id="2-3-1-基本概念"><a href="#2-3-1-基本概念" class="headerlink" title="2.3.1 基本概念"></a>2.3.1 基本概念</h4><ol>
+<li><p>两种制约关系 间接制约 直接制约</p>
+</li>
+<li><p>临界资源 生产者消费者问题</p>
+<p><img src="/2022/11/17/Capture%20the%20flag/system%20operation/image-20221122222454269.png" srcset="/img/loading.gif" lazyload alt="image-20221122222454269"></p>
+</li>
+<li><p>临界区 每个进程中访问临界资源的代码成为临界区</p>
+</li>
+<li><p>同步机制规则</p>
+<p>空闲让进 忙则等待 有限等待 让权等待</p>
+</li>
+</ol>
+<h4 id="2-3-2-信号量机制"><a href="#2-3-2-信号量机制" class="headerlink" title="2.3.2 信号量机制"></a>2.3.2 信号量机制</h4><ol>
+<li><p>整形信号量 S(可用资源数目)</p>
+<p>原子操作 wait(S) 请求 signal(S) 释放</p>
+</li>
+<li><p>记录型信号量 链表指针L 链接所有等待进程</p>
+</li>
+<li><p>and型信号量</p>
+<p>全部资源都准备好 进程才能进入</p>
+</li>
+<li><p>信号量集 123的整合</p>
+</li>
+</ol>
+<h4 id="2-3-3-信号量应用"><a href="#2-3-3-信号量应用" class="headerlink" title="2.3.3 信号量应用"></a>2.3.3 信号量应用</h4><ol>
+<li><p>利用信号量实现互斥</p>
+<p>设置互斥信号量mutex&#x3D;1 各进程访问该资源的临界区CS置于wait(mutex)和signal(mutex)操作</p>
+</li>
+<li><p>实现前趋关系</p>
+</li>
+</ol>
+<h3 id="2-4-经典进程同步问题"><a href="#2-4-经典进程同步问题" class="headerlink" title="2.4 经典进程同步问题"></a>2.4 经典进程同步问题</h3><ol>
+<li>哲学家问题and信号量</li>
+<li>读者问题记录型型号量</li>
+</ol>
+<h3 id="2-5-进程通信"><a href="#2-5-进程通信" class="headerlink" title="2.5 进程通信"></a>2.5 进程通信</h3><p>1. </p>
 
                 
               </div>
@@ -398,8 +468,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>文件上传漏洞</div>
-      <div>http://example.com/2022/10/28/learning diary/文件上传漏洞/</div>
+      <div>System Operation</div>
+      <div>http://example.com/2022/11/17/Capture the flag/system operation/</div>
     </div>
     <div class="license-meta">
       
@@ -411,7 +481,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>October 28, 2022</div>
+          <div>November 17, 2022</div>
         </div>
       
       
@@ -443,9 +513,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/10/29/learning%20diary/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/" title="文件包含漏洞">
+                      <a href="/2022/11/18/learning%20diary/python%E7%88%AC%E8%99%AB/" title="python爬虫学习">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">文件包含漏洞</span>
+                        <span class="hidden-mobile">python爬虫学习</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -453,8 +523,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/10/23/learning%20diary/sqli%20less%E9%97%AF%E5%85%B3%E6%97%A5%E8%AE%B0/" title="sqli less">
-                        <span class="hidden-mobile">sqli less</span>
+                      <a href="/2022/11/14/learning%20diary/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" title="php反序列化">
+                        <span class="hidden-mobile">php反序列化</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
