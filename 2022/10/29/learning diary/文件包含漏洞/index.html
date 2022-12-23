@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://img-blog.csdnimg.cn/65f354f2a2774be9b74c3f3940b8e0b3.png">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/4737e3fbbbae4ebda4d419264e9e556c.png">
 <meta property="article:published_time" content="2022-10-28T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-11-09T12:11:15.481Z">
+<meta property="article:modified_time" content="2022-12-04T09:03:43.369Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://img-blog.csdnimg.cn/cbc0f2c94dd84c7db45f3ece931e174f.png">
@@ -253,7 +253,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.7k words
+          4.8k words
         
       </span>
     
@@ -264,7 +264,7 @@
         
         
         
-          23 mins
+          41 mins
         
       </span>
     
@@ -343,7 +343,9 @@
 <p>还有一种截断方法就是?号截断，在路径后面输入?号，服务器会认为?号后面的内容为GET方法传递的参数，成功读取test.php如下：</p>
 <p><img src="/2022/10/29/learning%20diary/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/image-20221029224730335.png" srcset="/img/loading.gif" lazyload alt="image-20221029224730335"></p>
 <p>如果test.php是恶意的webshell文件，那么利用该漏洞就可以获取到服务器权限。</p>
-<h3 id="五-php伪协议"><a href="#五-php伪协议" class="headerlink" title="五 php伪协议"></a>五 php伪协议</h3><ol>
+<h3 id="五-php伪协议"><a href="#五-php伪协议" class="headerlink" title="五 php伪协议"></a>五 php伪协议</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Jeff_12138/article/details/124815370?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522167014437716782388029058%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=167014437716782388029058&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-2-124815370-null-null.142">https://blog.csdn.net/Jeff_12138/article/details/124815370?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522167014437716782388029058%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=167014437716782388029058&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-2-124815370-null-null.142</a></p>
+<p>伪协议精讲</p>
+<ol>
 <li><p><strong>file:&#x2F;&#x2F;</strong> 用于访问本地文件系统，在CTF中通常用来读取本地文件的且不受allow_url_fopen与allow_url_include的影响</p>
 </li>
 <li><p>php:&#x2F;&#x2F; 访问各个输入&#x2F;输出流（I&#x2F;O streams），在CTF中经常使用的是php:&#x2F;&#x2F;filter和php:&#x2F;&#x2F;input<br>php:&#x2F;&#x2F;filter用于读取源码。<br>php:&#x2F;&#x2F;input用于执行php代码。</p>
@@ -369,6 +371,30 @@
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs php">allow_url_fopen ：on<br>allow_url_include：on data:<span class="hljs-comment">//text/plain,&lt;?php phpinfo();?&gt;</span><br><span class="hljs-comment">//如果此处对特殊字符进行了过滤，我们还可以通过base64编码后再输入：</span><br>data:<span class="hljs-comment">//text/plain;base64,PD9waHAgcGhwaW5mbygpPz4=</span><br></code></pre></td></tr></table></figure></li>
 </ol>
 <p><img src="https://img-blog.csdnimg.cn/4737e3fbbbae4ebda4d419264e9e556c.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<h3 id="什么是File协议"><a href="#什么是File协议" class="headerlink" title="什么是File协议"></a>什么是File协议</h3><p>字面意思：本地文件传输协议</p>
+<p>什么是File：</p>
+<p>file协议主要用于访问本地计算机中的文件，好比通过Windows的资源管理器中打开文件或者通过右键单击‘打开’一样。</p>
+<p>使用格式<br>文件URI的形式为</p>
+<p>file：&#x2F;&#x2F; host &#x2F; path<br>1<br>host是可以在其上访问路径的系统的标准域名<br>path是格式为directory &#x2F; directory &#x2F;…&#x2F; name的分层目录路径。</p>
+<p>如果省略host ，则将其视为“ localhost ”，即从其解释URL的计算机。 请注意，省略主机时，不会省略斜杠（尽管“ file：&#x2F;&#x2F;&#x2F;foo.txt ”有效，而“ file：&#x2F;&#x2F;foo.txt ”无效，尽管某些解释器设法处理后者）。</p>
+<p>如何使用：<br>file协议的基本格式如下：</p>
+<p>file:&#x2F;&#x2F;&#x2F;文件路径</p>
+<p>比如需要打开E盘下txt目录中的index.txt，那么在资源管理器或者浏览器地址栏中输入：file:&#x2F;&#x2F;&#x2F;E:&#x2F;txt&#x2F;index.txt。用file:&#x2F;&#x2F;&#x2F;+文件地址，其实等价于文件的地址。即：</p>
+<p>file:&#x2F;&#x2F;&#x2F;C:&#x2F;Users&#x2F;www</p>
+<p>等价于：</p>
+<p>C:&#x2F;Users&#x2F;www</p>
+<p>多少个斜线？<br>URI中为什么本地文件file后面跟三个斜杠？<br>URI的结构为：</p>
+<p>scheme:[&#x2F;&#x2F;[user:password@]host[:port]][&#x2F;]path[?query][#fragment]</p>
+<p>如果有host，前面需要加&#x2F;&#x2F;，因此对于http或https等网络地址来说会写成：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lishanleilixin/article/category/7191777">https://blog.csdn.net/lishanleilixin/article/category/7191777</a></p>
+<p>这样看上去很自然。如果是文件的话，文件没有host，所以中间的host部分就不要了，就变成了:</p>
+<p>file:&#x2F;&#x2F;&#x2F;lishanleilixin&#x2F;article&#x2F;category&#x2F;7191777<br>1<br>因为如果没有host的话，第一个[]的内容就不存在了，这种同意的写法有一个标准叫CURIE。</p>
+<p>文件后的&#x2F;&#x2F;， &#x2F;&#x2F;表示主机名或字面值localhost将跟随 ，尽管该部分可以完全省略，也可以包含空的主机名。主机和路径之间的单斜杠表示URI的本地路径部分的开始，并且必须存在。因此，有效的文件URI必须以file:&#x2F;path ， file:&#x2F;&#x2F;&#x2F;path或file:&#x2F;&#x2F;hostname&#x2F;path。<br>file:&#x2F;&#x2F;path （即两个斜杠，不带主机名）不正确，但经常使用。<br>在目录和子目录的分层系统中， 路径分隔的目录名中的进一步斜杠。 在这种用法中，斜线是一种通用的，独立于系统的方式来分隔各部分，并且在特定的主机系统中，它可以在任何路径名中（例如在Unix系统中）使用。</p>
+<p>浏览器通过file:&#x2F;&#x2F;访问文件和http:&#x2F;&#x2F;访问文件的区别<br>file协议用于访问本地计算机中的文件，好比通过资源管理器中打开文件一样，需要主要的是它是针对本地的，即file协议是访问你本机的文件资源。</p>
+<p>http访问本地的html文件，相当于将本机作为了一台http服务器，然后通过localhost访问的是你自己电脑上的本地服务器，再通过http服务器去访问你本机的文件资源。</p>
+<p>再简单点就是file只是简单请求了本地文件，将其作为一个服务器未解析的静态文件打开。而http是在本地搭建了一个服务器再通过服务器去动态解析拿到文件。</p>
+<p>其他区别：</p>
+<p>file协议只能在本地访问<br>本地搭建http服务器开放端口后他人也可以通过http访问到你电脑中的文件，但是file协议做不到<br>file协议对应有一个类似http的远程访问，就是ftp协议，即文件传输协议。<br>file协议无法实现跨域</p>
 
                 
               </div>
