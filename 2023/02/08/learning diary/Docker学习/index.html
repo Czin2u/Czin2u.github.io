@@ -16,21 +16,21 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="软件工程 12.29 9.30-11.30 实验报告 12.25之前  kernel programing 第三次实验 12.7号  答辩 12.15 课程设计报告 实习报告 源代码 答辩记录评分表  工程实践 12.30">
+    <meta name="description" content="Docker(一) 基本知识一  概述​        Docker是一个开源的容器引擎，也是一种虚拟化技术，可以使得开发人员将应用和开发环境全部打包安装到一个可移植的容器中，然后发布到其他的Linux平台上。这样，就解决了一个应用在开发环境上运行正常，但是在测试和生产环境中运行出现BUG的问题，极大的解决了给一个应用配置各种依赖环境的复杂性，也解决了应用和系统软件、硬件不兼容的问题。Docker">
 <meta property="og:type" content="article">
-<meta property="og:title" content="DeadLine">
-<meta property="og:url" content="http://example.com/2022/12/03/DeadLine/index.html">
+<meta property="og:title" content="Docker学习">
+<meta property="og:url" content="http://example.com/2023/02/08/learning%20diary/Docker%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="Czin2u✈️✈️✈️">
-<meta property="og:description" content="软件工程 12.29 9.30-11.30 实验报告 12.25之前  kernel programing 第三次实验 12.7号  答辩 12.15 课程设计报告 实习报告 源代码 答辩记录评分表  工程实践 12.30">
+<meta property="og:description" content="Docker(一) 基本知识一  概述​        Docker是一个开源的容器引擎，也是一种虚拟化技术，可以使得开发人员将应用和开发环境全部打包安装到一个可移植的容器中，然后发布到其他的Linux平台上。这样，就解决了一个应用在开发环境上运行正常，但是在测试和生产环境中运行出现BUG的问题，极大的解决了给一个应用配置各种依赖环境的复杂性，也解决了应用和系统软件、硬件不兼容的问题。Docker">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-12-03T07:58:45.485Z">
-<meta property="article:modified_time" content="2022-12-03T08:26:15.156Z">
+<meta property="article:published_time" content="2023-02-08T06:35:11.913Z">
+<meta property="article:modified_time" content="2023-02-08T06:39:45.640Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>DeadLine - Czin2u✈️✈️✈️</title>
+  <title>Docker学习 - Czin2u✈️✈️✈️</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -222,7 +222,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="DeadLine"></span>
+            <span id="subtitle" data-typed-text="Docker学习"></span>
           
         </div>
 
@@ -233,8 +233,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-12-03 15:58" pubdate>
-          December 3, 2022 pm
+        <time datetime="2023-02-08 14:35" pubdate>
+          February 8, 2023 pm
         </time>
       </span>
     
@@ -245,7 +245,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          92 words
+          977 words
         
       </span>
     
@@ -256,7 +256,7 @@
         
         
         
-          1 mins
+          9 mins
         
       </span>
     
@@ -294,22 +294,15 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">DeadLine</h1>
+            <h1 style="display: none">Docker学习</h1>
             
             
               <div class="markdown-body">
                 
-                <ol>
-<li><p>软件工程 12.29 9.30-11.30 实验报告 12.25之前</p>
-</li>
-<li><p>kernel programing 第三次实验 12.7号 </p>
-<p>答辩 12.15 课程设计报告 实习报告 源代码 答辩记录评分表</p>
-</li>
-<li><p>工程实践 12.30</p>
-</li>
-<li></li>
-</ol>
-
+                <h3 id="Docker-一-基本知识"><a href="#Docker-一-基本知识" class="headerlink" title="Docker(一) 基本知识"></a>Docker(一) 基本知识</h3><h4 id="一-概述"><a href="#一-概述" class="headerlink" title="一  概述"></a>一  概述</h4><p>​        Docker是一个开源的容器引擎，也是一种虚拟化技术，可以使得开发人员将应用和开发环境全部打包安装到一个可移植的容器中，然后发布到其他的Linux平台上。这样，就解决了一个应用在开发环境上运行正常，但是在测试和生产环境中运行出现BUG的问题，极大的解决了给一个应用配置各种依赖环境的复杂性，也解决了应用和系统软件、硬件不兼容的问题。Docker的容器类似于虚拟机，也使用了沙盒机制，不同的容器之间没有接口，独立运行，互不干扰，一台容器的崩溃不会影响到其他的容器。Docker容器的运行几乎没有性能开销，可以很容易的在机器和数据中心上运行，并且不依赖与任何语言、框架和系统。<br>Docker由dotCloud公司开发，基于LXC的高级容器引擎，源代码托管在Github平台上，使用GO语言开发并遵循Apache2.0协议开源。</p>
+<h4 id="二-特性"><a href="#二-特性" class="headerlink" title="二  特性"></a>二  特性</h4><p>Docker的特性如下所示：<br>1、文件系统隔离<br>每个进行容器运行在一个完全独立的文件系统里。<br>2、资源隔离<br>使用cgroup（会在之后的文章中介绍到）来分配系统硬件资源，包括内存、CPU、磁盘IO等。<br>3、网络隔离<br>每个进程容器运行在自己的网络空间，有自己的虚拟接口和IP地址。<br>4、日志记录<br>Docker会收集和记录每个容器的标准输入输出，并用于检索。<br>5、变更管理<br>容器文件系统的变更可以提交到新的镜像中，并可以重复使用以创建更多的容器，无需使用模板或手动配置。<br>6、交互式shell<br>Docker可以分配一个虚拟终端并关联到任何容器的标准输入输出（即使用命令行页面控制该容器）上。</p>
+<h4 id="三-优缺点"><a href="#三-优缺点" class="headerlink" title="三 优缺点"></a>三 优缺点</h4><p>Docker有以下优点：<br>1、代码量小，运行速度快。Docker启动一个容器实例的时间很短，大约只需要1-2秒。<br>2、Docker适应性强。可以运行在笔记本电脑、数据中心的虚拟机乃至任何的云上。<br>3、Docker支持Linux、Unix和Windows操作系统。<br>4、Google、微软、亚马逊和IBM都支持Docker。<br>Docker有以下缺点：<br>Docker适用于计算，但是不适用于存储。Docker不适合安装数据库等需要数据存储的软件或服务。Docker不适合存储大量数据，因此Docker容器产生的数据、日志等应该放在容器外。我们可以通过NFS、映射磁盘分区等方式解决Docker的数据存储问题。</p>
+<h3 id="Docker-二-技术原理和架构"><a href="#Docker-二-技术原理和架构" class="headerlink" title="Docker(二) 技术原理和架构"></a>Docker(二) 技术原理和架构</h3><h4 id><a href="#" class="headerlink" title></a></h4>
                 
               </div>
             
@@ -326,8 +319,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>DeadLine</div>
-      <div>http://example.com/2022/12/03/DeadLine/</div>
+      <div>Docker学习</div>
+      <div>http://example.com/2023/02/08/learning diary/Docker学习/</div>
     </div>
     <div class="license-meta">
       
@@ -339,7 +332,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>December 3, 2022</div>
+          <div>February 8, 2023</div>
         </div>
       
       
@@ -371,9 +364,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/12/04/Capture%20the%20flag/ctf%20fakebook/" title="fakebook ssrf+反序列化+sql注入">
+                      <a href="/2023/02/08/docker%E5%91%BD%E4%BB%A4/" title="Docker命令">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">fakebook ssrf+反序列化+sql注入</span>
+                        <span class="hidden-mobile">Docker命令</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -381,8 +374,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/12/01/Capture%20the%20flag/gxyctf%20babysqli%202019/" title="cxyctf 2019">
-                        <span class="hidden-mobile">cxyctf 2019</span>
+                      <a href="/2023/01/09/dirsearch/" title="">
+                        <span class="hidden-mobile"></span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

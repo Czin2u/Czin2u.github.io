@@ -16,36 +16,21 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="一 buuctf 进去注册   对blog有合法校验  注册成功后  只有admin可以点  上面no&#x3D;1有可能有注入漏洞 下面iframe中为我们的blog返回网页的html base64加密   有4个字段 第二个字段有回显 存在联合注入    四个字段名 no username passwd data  data未知 查一下  data里面存的是个UserInfo类的序列化对象 三">
+    <meta name="description" content="easy_serialize_phpphp反序列化,代码审计 打开网站,源码如下 12345678910111213141516171819202122232425262728293031323334353637383940&lt;?php$function &#x3D; @$_GET[&amp;#x27;f&amp;#x27;];function filter($img)&amp;#123;    $filter_arr &#x3D; a">
 <meta property="og:type" content="article">
-<meta property="og:title" content="fakebook ssrf+反序列化+sql注入">
-<meta property="og:url" content="http://example.com/2022/12/04/Capture%20the%20flag/ctf%20fakebook/index.html">
+<meta property="og:title" content="easy_serialize_php">
+<meta property="og:url" content="http://example.com/2023/02/26/Capture%20the%20flag/easy_serialize_php%201/index.html">
 <meta property="og:site_name" content="Czin2u✈️✈️✈️">
-<meta property="og:description" content="一 buuctf 进去注册   对blog有合法校验  注册成功后  只有admin可以点  上面no&#x3D;1有可能有注入漏洞 下面iframe中为我们的blog返回网页的html base64加密   有4个字段 第二个字段有回显 存在联合注入    四个字段名 no username passwd data  data未知 查一下  data里面存的是个UserInfo类的序列化对象 三">
+<meta property="og:description" content="easy_serialize_phpphp反序列化,代码审计 打开网站,源码如下 12345678910111213141516171819202122232425262728293031323334353637383940&lt;?php$function &#x3D; @$_GET[&amp;#x27;f&amp;#x27;];function filter($img)&amp;#123;    $filter_arr &#x3D; a">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2022/12/04/Capture%20the%20flag/ctf%20fakebook/image-20221204150249963.png">
-<meta property="og:image" content="http://example.com/2022/12/04/Capture%20the%20flag/ctf%20fakebook/image-20221204150316591.png">
-<meta property="og:image" content="http://example.com/2022/12/04/Capture%20the%20flag/ctf%20fakebook/image-20221204150350242.png">
-<meta property="og:image" content="http://example.com/2022/12/04/Capture%20the%20flag/ctf%20fakebook/image-20221204150427173.png">
-<meta property="og:image" content="http://example.com/2022/12/04/Capture%20the%20flag/ctf%20fakebook/image-20221204150616299.png">
-<meta property="og:image" content="http://example.com/2022/12/04/Capture%20the%20flag/ctf%20fakebook/image-20221204150822099.png">
-<meta property="og:image" content="http://example.com/2022/12/04/Capture%20the%20flag/ctf%20fakebook/image-20221204151557068.png">
-<meta property="og:image" content="http://example.com/2022/12/04/Capture%20the%20flag/ctf%20fakebook/image-20221204151619718.png">
-<meta property="og:image" content="http://example.com/2022/12/04/Capture%20the%20flag/ctf%20fakebook/image-20221204152347774.png">
-<meta property="og:image" content="http://example.com/2022/12/04/Capture%20the%20flag/ctf%20fakebook/image-20221204152525990.png">
-<meta property="og:image" content="http://example.com/2022/12/04/Capture%20the%20flag/ctf%20fakebook/image-20221204160622717.png">
-<meta property="og:image" content="http://example.com/2022/12/04/Capture%20the%20flag/ctf%20fakebook/image-20221204165634456.png">
-<meta property="og:image" content="http://example.com/2022/12/04/Capture%20the%20flag/ctf%20fakebook/image-20221204170838782.png">
-<meta property="og:image" content="http://example.com/2022/12/04/Capture%20the%20flag/ctf%20fakebook/image-20221204171147977.png">
-<meta property="article:published_time" content="2022-12-04T06:58:44.907Z">
-<meta property="article:modified_time" content="2022-12-04T09:11:51.319Z">
+<meta property="article:published_time" content="2023-02-26T12:01:04.442Z">
+<meta property="article:modified_time" content="2023-02-26T12:28:04.412Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2022/12/04/Capture%20the%20flag/ctf%20fakebook/image-20221204150249963.png">
   
   
   
-  <title>fakebook ssrf+反序列化+sql注入 - Czin2u✈️✈️✈️</title>
+  <title>easy_serialize_php - Czin2u✈️✈️✈️</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -237,7 +222,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="fakebook ssrf+反序列化+sql注入"></span>
+            <span id="subtitle" data-typed-text="easy_serialize_php"></span>
           
         </div>
 
@@ -248,8 +233,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-12-04 14:58" pubdate>
-          December 4, 2022 pm
+        <time datetime="2023-02-26 20:01" pubdate>
+          February 26, 2023 pm
         </time>
       </span>
     
@@ -260,7 +245,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.8k words
+          2.3k words
         
       </span>
     
@@ -271,7 +256,7 @@
         
         
         
-          15 mins
+          19 mins
         
       </span>
     
@@ -309,51 +294,34 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">fakebook ssrf+反序列化+sql注入</h1>
+            <h1 style="display: none">easy_serialize_php</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="一-buuctf"><a href="#一-buuctf" class="headerlink" title="一 buuctf"></a>一 buuctf</h2><ol>
-<li><p>进去注册<img src="/2022/12/04/Capture%20the%20flag/ctf%20fakebook/image-20221204150249963.png" srcset="/img/loading.gif" lazyload alt="image-20221204150249963"></p>
-</li>
-<li><p><img src="/2022/12/04/Capture%20the%20flag/ctf%20fakebook/image-20221204150316591.png" srcset="/img/loading.gif" lazyload alt="image-20221204150316591"></p>
-<p>对blog有合法校验</p>
-<p><img src="/2022/12/04/Capture%20the%20flag/ctf%20fakebook/image-20221204150350242.png" srcset="/img/loading.gif" lazyload alt="image-20221204150350242"></p>
-<p>注册成功后</p>
-<p><img src="/2022/12/04/Capture%20the%20flag/ctf%20fakebook/image-20221204150427173.png" srcset="/img/loading.gif" lazyload alt="image-20221204150427173"></p>
-<p>只有admin可以点</p>
-<p><img src="/2022/12/04/Capture%20the%20flag/ctf%20fakebook/image-20221204150616299.png" srcset="/img/loading.gif" lazyload alt="image-20221204150616299"></p>
-<p>上面no&#x3D;1有可能有注入漏洞 下面iframe中为我们的blog返回网页的html base64加密</p>
-</li>
-<li><p><img src="/2022/12/04/Capture%20the%20flag/ctf%20fakebook/image-20221204150822099.png" srcset="/img/loading.gif" lazyload alt="image-20221204150822099"></p>
-<p>有4个字段 第二个字段有回显 存在联合注入</p>
-<p><img src="/2022/12/04/Capture%20the%20flag/ctf%20fakebook/image-20221204151557068.png" srcset="/img/loading.gif" lazyload alt="image-20221204151557068"></p>
-<p><img src="/2022/12/04/Capture%20the%20flag/ctf%20fakebook/image-20221204151619718.png" srcset="/img/loading.gif" lazyload alt="image-20221204151619718"></p>
-<p><img src="/2022/12/04/Capture%20the%20flag/ctf%20fakebook/image-20221204152347774.png" srcset="/img/loading.gif" lazyload alt="image-20221204152347774"></p>
-<p>四个字段名 no username passwd data  data未知 查一下</p>
-<p><img src="/2022/12/04/Capture%20the%20flag/ctf%20fakebook/image-20221204152525990.png" srcset="/img/loading.gif" lazyload alt="image-20221204152525990"></p>
-<p>data里面存的是个UserInfo类的序列化对象 三个成员变量name age blog</p>
-<p>路径扫描有flag.php 和user.php.bak</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserInfo</span></span><br><span class="hljs-class"></span>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$name</span> = <span class="hljs-string">&quot;&quot;</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$age</span> = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$blog</span> = <span class="hljs-string">&quot;&quot;</span>;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params"><span class="hljs-variable">$name</span>, <span class="hljs-variable">$age</span>, <span class="hljs-variable">$blog</span></span>)</span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-variable language_">$this</span>-&gt;name = <span class="hljs-variable">$name</span>;<br>        <span class="hljs-variable language_">$this</span>-&gt;age = (<span class="hljs-keyword">int</span>)<span class="hljs-variable">$age</span>;<br>        <span class="hljs-variable language_">$this</span>-&gt;blog = <span class="hljs-variable">$blog</span>;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">get</span>(<span class="hljs-params"><span class="hljs-variable">$url</span></span>)</span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-variable">$ch</span> = <span class="hljs-title function_ invoke__">curl_init</span>();<br><br>        <span class="hljs-title function_ invoke__">curl_setopt</span>(<span class="hljs-variable">$ch</span>, CURLOPT_URL, <span class="hljs-variable">$url</span>);<br>        <span class="hljs-title function_ invoke__">curl_setopt</span>(<span class="hljs-variable">$ch</span>, CURLOPT_RETURNTRANSFER, <span class="hljs-number">1</span>);<br>        <span class="hljs-variable">$output</span> = <span class="hljs-title function_ invoke__">curl_exec</span>(<span class="hljs-variable">$ch</span>);<br>        <span class="hljs-variable">$httpCode</span> = <span class="hljs-title function_ invoke__">curl_getinfo</span>(<span class="hljs-variable">$ch</span>, CURLINFO_HTTP_CODE);<br>        <span class="hljs-keyword">if</span>(<span class="hljs-variable">$httpCode</span> == <span class="hljs-number">404</span>) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">404</span>;<br>        &#125;<br>        <span class="hljs-title function_ invoke__">curl_close</span>(<span class="hljs-variable">$ch</span>);<br><br>        <span class="hljs-keyword">return</span> <span class="hljs-variable">$output</span>;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getBlogContents</span> (<span class="hljs-params"></span>)</span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">$this</span>-&gt;<span class="hljs-title function_ invoke__">get</span>(<span class="hljs-variable">$this</span>-&gt;blog);<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isValidBlog</span> (<span class="hljs-params"></span>)</span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-variable">$blog</span> = <span class="hljs-variable language_">$this</span>-&gt;blog;<br>        <span class="hljs-keyword">return</span> <span class="hljs-title function_ invoke__">preg_match</span>(<span class="hljs-string">&quot;/^(((http(s?))\:\/\/)?)([0-9a-zA-Z\-]+\.)+[a-zA-Z]&#123;2,6&#125;(\:[0-9]+)?(\/\S*)?$/i&quot;</span>, <span class="hljs-variable">$blog</span>);<br>    &#125;<br><br>&#125;<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+                <h2 id="easy-serialize-php"><a href="#easy-serialize-php" class="headerlink" title="easy_serialize_php"></a>easy_serialize_php</h2><p>php反序列化,代码审计</p>
+<p>打开网站,源码如下</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><br><span class="hljs-variable">$function</span> = @<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;f&#x27;</span>];<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">filter</span>(<span class="hljs-params"><span class="hljs-variable">$img</span></span>)</span>&#123;<br>    <span class="hljs-variable">$filter_arr</span> = <span class="hljs-keyword">array</span>(<span class="hljs-string">&#x27;php&#x27;</span>,<span class="hljs-string">&#x27;flag&#x27;</span>,<span class="hljs-string">&#x27;php5&#x27;</span>,<span class="hljs-string">&#x27;php4&#x27;</span>,<span class="hljs-string">&#x27;fl1g&#x27;</span>);<br>    <span class="hljs-variable">$filter</span> = <span class="hljs-string">&#x27;/&#x27;</span>.<span class="hljs-title function_ invoke__">implode</span>(<span class="hljs-string">&#x27;|&#x27;</span>,<span class="hljs-variable">$filter_arr</span>).<span class="hljs-string">&#x27;/i&#x27;</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-title function_ invoke__">preg_replace</span>(<span class="hljs-variable">$filter</span>,<span class="hljs-string">&#x27;&#x27;</span>,<span class="hljs-variable">$img</span>);<br>&#125;<br><br><br><span class="hljs-keyword">if</span>(<span class="hljs-variable">$_SESSION</span>)&#123;<br>    <span class="hljs-keyword">unset</span>(<span class="hljs-variable">$_SESSION</span>);<br>&#125;<br><br><span class="hljs-variable">$_SESSION</span>[<span class="hljs-string">&quot;user&quot;</span>] = <span class="hljs-string">&#x27;guest&#x27;</span>;<br><span class="hljs-variable">$_SESSION</span>[<span class="hljs-string">&#x27;function&#x27;</span>] = <span class="hljs-variable">$function</span>;<br><br><span class="hljs-title function_ invoke__">extract</span>(<span class="hljs-variable">$_POST</span>);<br><br><span class="hljs-keyword">if</span>(!<span class="hljs-variable">$function</span>)&#123;<br>    <span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;&lt;a href=&quot;index.php?f=highlight_file&quot;&gt;source_code&lt;/a&gt;&#x27;</span>;<br>&#125;<br><br><span class="hljs-keyword">if</span>(!<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;img_path&#x27;</span>])&#123;<br>    <span class="hljs-variable">$_SESSION</span>[<span class="hljs-string">&#x27;img&#x27;</span>] = <span class="hljs-title function_ invoke__">base64_encode</span>(<span class="hljs-string">&#x27;guest_img.png&#x27;</span>);<br>&#125;<span class="hljs-keyword">else</span>&#123;<br>    <span class="hljs-variable">$_SESSION</span>[<span class="hljs-string">&#x27;img&#x27;</span>] = <span class="hljs-title function_ invoke__">sha1</span>(<span class="hljs-title function_ invoke__">base64_encode</span>(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;img_path&#x27;</span>]));<br>&#125;<br><br><span class="hljs-variable">$serialize_info</span> = <span class="hljs-title function_ invoke__">filter</span>(<span class="hljs-title function_ invoke__">serialize</span>(<span class="hljs-variable">$_SESSION</span>));<br><br><span class="hljs-keyword">if</span>(<span class="hljs-variable">$function</span> == <span class="hljs-string">&#x27;highlight_file&#x27;</span>)&#123;<br>    <span class="hljs-title function_ invoke__">highlight_file</span>(<span class="hljs-string">&#x27;index.php&#x27;</span>);<br>&#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(<span class="hljs-variable">$function</span> == <span class="hljs-string">&#x27;phpinfo&#x27;</span>)&#123;<br>    <span class="hljs-keyword">eval</span>(<span class="hljs-string">&#x27;phpinfo();&#x27;</span>); <span class="hljs-comment">//maybe you can find something in here!</span><br>&#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(<span class="hljs-variable">$function</span> == <span class="hljs-string">&#x27;show_image&#x27;</span>)&#123;<br>    <span class="hljs-variable">$userinfo</span> = <span class="hljs-title function_ invoke__">unserialize</span>(<span class="hljs-variable">$serialize_info</span>);<br>    <span class="hljs-keyword">echo</span> <span class="hljs-title function_ invoke__">file_get_contents</span>(<span class="hljs-title function_ invoke__">base64_decode</span>(<span class="hljs-variable">$userinfo</span>[<span class="hljs-string">&#x27;img&#x27;</span>]));<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>对于curl_exec()的参数未做检查,存在ssrf(服务器请求伪造)结合反馈消息,应该可以猜到,</p>
-<p>当最开始注册的时候 就创建了UserInfo()类 更新数据,在调用类方法isValidBlog()检查类成员$blog的合法性,合法的话就用serialize()序列化类为字符串,保存为data存到数据库中</p>
-<p>当我们点击admin时 从数据库中查询data 直接调用unserialize()<img src="/2022/12/04/Capture%20the%20flag/ctf%20fakebook/image-20221204160622717.png" srcset="/img/loading.gif" lazyload alt="image-20221204160622717"></p>
-<p>反序列化,然后就调用getBlogContents()类方法 没有对参数进行检查</p>
-<p>所以构造payload:</p>
-<p>O:8:”UserInfo”:3:{s:4:”name”;s:5:”admin”;s:3:”age”;i:16;s:4:”blog”;s:57:”php:&#x2F;&#x2F;filter&#x2F;read&#x3D;convert.base64-encode&#x2F;resource&#x3D;flag.php”;}好像不行</p>
-<p>curl_exec()支持ftp, ftps, http, https, gopher, telnet, dict, file, ldapa协议</p>
-<p>改用</p>
-<p>O:8:”UserInfo”:3:{s:4:”name”;s:5:”admin”;s:3:”age”;i:16;s:4:”blog”;s:29:”file:&#x2F;&#x2F;&#x2F;var&#x2F;www&#x2F;html&#x2F;flag.php”;}</p>
-<p><img src="/2022/12/04/Capture%20the%20flag/ctf%20fakebook/image-20221204165634456.png" srcset="/img/loading.gif" lazyload alt="image-20221204165634456"></p>
-<p>得到flag.php的base64</p>
-<p><img src="/2022/12/04/Capture%20the%20flag/ctf%20fakebook/image-20221204170838782.png" srcset="/img/loading.gif" lazyload alt="image-20221204170838782"></p>
-<p>大功告成</p>
-<p>还有用户为root权限,可以用load_file()</p>
-<p>no&#x3D;-1 union&#x2F;**&#x2F;select 1,load_file(‘&#x2F;var&#x2F;www&#x2F;html&#x2F;flag.php’),3,4 #</p>
-<p><img src="/2022/12/04/Capture%20the%20flag/ctf%20fakebook/image-20221204171147977.png" srcset="/img/loading.gif" lazyload alt="image-20221204171147977"></p>
+<h3 id="分析-与知识点累积"><a href="#分析-与知识点累积" class="headerlink" title="分析,与知识点累积"></a>分析,与知识点累积</h3><ol>
+<li><p>serialize($_SESSION) 会出现序列化对象 a:2{s:4:’name’;s:4:’kali’} </p>
+<p>对象,类的序列化 O:s:’name’:2{s:4:’name’;s:4:’kali’} </p>
 </li>
+<li><p>extract($post,,)函数将数组展开,键名作变量名,键值作变量值</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-title function_ invoke__">extract</span>(<span class="hljs-variable">$_POST</span>);<br><span class="hljs-comment">//相当于$username = $_POST[&#x27;username&#x27;]; </span><br><span class="hljs-comment">//$password = $_POST[&#x27;password&#x27;];</span><br></code></pre></td></tr></table></figure>
+
+<p>默认参数EXTR_OVERWRITE -。如果有冲突，则覆盖已有的变量。</p>
+</li>
+</ol>
+<h3 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h3><p>$_SESSION[“user”]和$_SESSION[‘function’]通过post方法和extract函数导致这两个参数是可控的,而且不影响原来的$function的值</p>
+<p>_SESSION[user]&#x3D;fl1gfl1gfl1gfl1gfl1gfl1gfl1g</p>
+<p>_SESSION[function]&#x3D;a:2:{“;s:3:”img”;s:20:”L2QwZzNfZmxsbGxsbGFn”;s:1:”a”;s:1:”1”;}</p>
+<p>传参后,执行到&#x2F;&#x2F;$userinfo &#x3D; unserialize($serialize_info);时</p>
+<p>$serialize_info&#x3D;a:3:{s:4:”user”;s:28:””;s:8:”function”;s:62:”a:2:{“;s:3:”img”;s:20:”L2QwZzNfZmxsbGxsbGFn”;s:1:”a”;s:1:”1”;}”;s:3:”img”;s:20:”Z3Vlc3RfaW1nLnBuZw&#x3D;&#x3D;”;}</p>
+<p>仔细分析:user中的fl1g经过序列化和过滤导致缩进,”;s:8:”function”;s:62:”a:2:{被吞掉,使img属性得到执行,最后的”;s:3:”img”;s:20:”Z3Vlc3RfaW1nLnBuZw&#x3D;&#x3D;”;}直接被忽略掉</p>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><ol>
+<li>很小的知识点不知道都会导致整个分析崩盘,知识积累很重要.</li>
+<li>还有一点对于post方法传送数据的时候,直接抓包用burpsuite改数据好像有点儿问题(url编码),可以尝试直接用插件hackbox添加postdata.</li>
 </ol>
 
                 
@@ -372,8 +340,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>fakebook ssrf+反序列化+sql注入</div>
-      <div>http://example.com/2022/12/04/Capture the flag/ctf fakebook/</div>
+      <div>easy_serialize_php</div>
+      <div>http://example.com/2023/02/26/Capture the flag/easy_serialize_php 1/</div>
     </div>
     <div class="license-meta">
       
@@ -385,7 +353,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>December 4, 2022</div>
+          <div>February 26, 2023</div>
         </div>
       
       
@@ -417,18 +385,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/12/04/learning%20diary/%E6%BA%90%E7%A0%81%E6%B3%84%E9%9C%B2/" title="常见源码泄露">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">常见源码泄露</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/12/01/Capture%20the%20flag/gxyctf%20babysqli%202019/" title="cxyctf 2019">
-                        <span class="hidden-mobile">cxyctf 2019</span>
+                      <a href="/2023/02/12/Python/" title="Python">
+                        <span class="hidden-mobile">Python</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
